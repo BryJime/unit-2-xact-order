@@ -1,0 +1,397 @@
+html,
+body {
+  margin: 0;
+  padding: 0%;
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: rgb(246, 248, 253);
+}
+
+footer {
+  display: flex;
+  justify-content: end;
+  margin-top: auto;
+}
+
+a {
+  color: rgb(210, 233, 251);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-around;
+  background-color: rgb(57, 62, 91);
+  padding-top: 1px;
+  padding-bottom: 1px;
+
+}
+
+.navbar {
+  display: flex;
+  flex-direction: row;
+  font-size: large;
+  padding-top: 3em;
+  padding-bottom: 2em;
+  margin-right: 2em;
+  margin-left: 4em;
+
+}
+
+.navbar a {
+  text-decoration: none;
+}
+
+.header-home {
+  display: flex;
+  padding-right: 4em;
+}
+
+.header-about {
+  display: flex;
+  padding-left: 4em;
+}
+
+
+.title {
+  justify-content: flex-start;
+  font-style: italic;
+  color: black;
+}
+
+
+.logo {
+  display: flex;
+  justify-content: start;
+  margin-left: 60px;
+  margin-right: 60px;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  font-size: 60px;
+  color: rgb(225, 241, 255);
+  top: 0;
+
+}
+
+.search-feature {
+  display: flex;
+  justify-content: center;
+
+  height: 2em;
+}
+
+.searchBar {
+  width: 30%;
+}
+
+.search-body-message {
+  display: flex;
+  justify-content: center;
+  font-size: 25px;
+  padding-bottom: 5px;
+  padding-top: 20px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+.search-region-message {
+  display: flex;
+  justify-content: center;
+  font-size: 25px;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+.search-region {
+  display: flex;
+  justify-content: center;
+  height: 2em;
+
+}
+
+.search-dropdown {
+  width: 30%;
+}
+
+
+.home-introduction {
+  display: flex;
+  justify-content: center;
+  font-size: 2em;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.home-image {
+  display: flex;
+  justify-content: center;
+
+  margin-bottom: 30px;
+  color: rgb(255, 255, 255);
+
+}
+
+.get-started {
+  display: flex;
+  justify-content: center;
+  font-size: 2em;
+
+}
+
+.down-arrow {
+  display: flex;
+  justify-content: center;
+  font-size: 2em;
+
+}
+
+.validation-message {
+  display: flex;
+  justify-content: center;
+  color: rgb(202, 99, 99);
+}
+
+.exam-title-display {
+  margin-top: 5%;
+  margin-bottom: 5%;
+  font-size: 4em;
+}
+
+.exam-display {
+  display: flex;
+  height: 10em;
+  width: auto;
+  
+  border-radius: 30px;  
+  overflow: hidden;
+  justify-content: space-evenly;
+  margin-top: 3em; 
+  margin-bottom: 3em; 
+  background-color: rgb(67, 72, 102);
+  position: relative; 
+}
+
+.exam-display-procedure {
+  display: flex;
+  align-items: center;
+  font-size: 2em;
+  font-weight: bold;
+  margin-left: 2em;
+  margin-right: 2em;
+  color: rgb(225, 241, 255);
+}
+
+.exam-display-views {
+  margin: auto;
+  padding: auto;
+  align-items: center;
+  font-size: 2em;
+  color: rgb(225, 241, 255)
+}
+
+.exam-display-cpt {
+  right: 2em;
+  top: auto;
+  padding: 1em;
+  font-size: 2em;
+  color: rgb(225, 241, 255)
+}
+
+.exams-display-line {
+  color: black;
+}
+
+.shortcut-button {
+  position: absolute;
+  bottom: 20px;
+  right: 20px; 
+  font-weight: bold;
+  padding: 10px 20px; 
+  background-color: #fff;
+  border: 1px solid #2b2b2b;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.shortcut-button:hover {
+  background-color: #c8c8c8;
+}
+
+.about-content {
+  align-items: center;
+
+}
+
+.about-title {
+  display: flex;
+  justify-content: center;
+  font-size: 3em;
+}
+
+.about-body {
+  flex-direction: column;
+  font-size: 25px;
+}
+
+.why-section {
+  text-align: center;
+}
+
+.why-list {
+  list-style-position: inside;
+  line-height: 2em;
+}
+
+.who-section {
+  text-align: center;
+}
+
+.who-table,
+td {
+  border: 1px solid;
+  border-collapse: collapse;
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px;
+}
+
+
+.shortcuts-title {
+  display: flex;
+  font-size: 2.5em;
+  justify-content: center;
+
+}
+
+.skeleton-selection {
+  display: flex;
+  justify-content: center;   /* centers horizontally */
+  align-items: center;       /* centers vertically against the image */
+  gap: 40px;                 /* space between the buttons and the image */
+}
+
+.skeleton-list {
+  display: flex;
+  flex-direction: column;    /* stack buttons vertically */
+  justify-content: center;   /* center buttons inside the list container */
+  align-items: center;       /* keep them aligned in the middle */
+  gap: 6em;                  /* even spacing between buttons */
+}
+
+.anatomy-button {
+  font-size: 1rem;          
+  padding: 20px 20px 20px 20px;
+  margin:  12px 20px;
+  border-radius: 10px;
+  border: 1px solid #2b2b2b;
+  background: #fff;
+  cursor: pointer;
+  transition: 0.2s ease;
+  width: 90%;
+  text-align: center;
+
+}
+
+.anatomy-button:hover {
+  background: #c8c8c8;
+}
+
+.skeleton-svg {
+  max-width: 100%;
+  
+  height: auto;
+}
+
+.skeleton-svg {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+.human-skeleton {
+  overflow: hidden;
+  max-width: 420px; 
+}
+
+.s-region {
+  transition: fill 180ms ease, transform 180ms ease;
+}
+
+.s-region--hover {
+  fill: #5EEAD4 !important; 
+  transform-origin: center;
+}
+
+.s-region--active {
+  fill: #14B8A6 !important; 
+  filter: drop-shadow(0 6px 10px rgba(58,123,230,0.25));
+}
+
+
+@media (max-width: 800px) {
+
+  .navbar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: large;
+    padding-top: 2em;
+    padding-bottom: 2em;
+    margin-right: 4em;
+    margin-left: 4em;
+  }
+
+  .header-home {
+    display: flex;
+    padding-right: 0%;
+    padding-bottom: 1em;
+  }
+
+  .header-about {
+    display: flex;
+    padding-left: 0%;
+    padding-top: 1em;
+  }
+
+  .header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .exam-display {
+    flex-wrap: wrap;
+    
+  }
+}
+
+@media (max-width: 600px) {
+  .anatomy-button {
+    font-size: .6rem;
+    width: 90%;
+    padding: 12px 2px;
+  }
+}
+
+@media (max-width: 550px) {
+  .home-introduction {
+    text-align: center;
+  }
+
+  .logo {
+    text-align: center;
+  }
+}
