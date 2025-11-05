@@ -28,6 +28,10 @@ public class Views {
         this.name = name;
     }
 
+    public Views(String views) {
+        this.name = views;
+    }
+
     public Integer getId() {
         return id;
     }

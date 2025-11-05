@@ -30,6 +30,10 @@ public class Description {
         this.text = text;
     }
 
+    public Description(String description) {
+        this.text = description;
+    }
+
     public Integer getId() {
         return id;
     }

@@ -29,6 +29,10 @@ public class Anatomy {
         this.name = name;
     }
 
+    public Anatomy(String anatomy) {
+        this.name = anatomy;
+    }
+
     public Integer getId() {
         return id;
     }

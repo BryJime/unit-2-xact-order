@@ -24,16 +24,21 @@ public class CptCode {
     public CptCode() {
     }
 
-    public CptCode(Integer id, String code) {
+    public CptCode(Integer id, String cptCode) {
         this.id = id;
-        this.code = code;
+        this.code = cptCode;
     }
+
+    public CptCode(String cptCode) {
+        this.code = cptCode;
+    }
+
 
     public Integer getId() {
         return id;
     }
 
-    public String getCode() {
+    public String getCptCode() {
         return code;
     }
 

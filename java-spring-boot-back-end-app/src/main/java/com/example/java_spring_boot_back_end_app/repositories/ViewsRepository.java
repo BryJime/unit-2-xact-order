@@ -8,5 +8,6 @@ import java.util.Optional;
 
 @Repository
 public interface ViewsRepository extends JpaRepository<Views, Integer> {
+    Optional<Views> findByName(String name);
 }
 

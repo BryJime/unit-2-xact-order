@@ -29,6 +29,11 @@ public class Alias {
         this.name = name;
     }
 
+    public Alias(String alias) {
+        this.name = alias;
+    }
+
+
     public Integer getId() {
         return id;
     }

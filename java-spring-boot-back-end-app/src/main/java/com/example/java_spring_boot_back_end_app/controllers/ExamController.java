@@ -3,6 +3,7 @@ package com.example.java_spring_boot_back_end_app.controllers;
 import com.example.java_spring_boot_back_end_app.dto.ExamDTO;
 import com.example.java_spring_boot_back_end_app.models.*;
 import com.example.java_spring_boot_back_end_app.repositories.*;
+import com.example.java_spring_boot_back_end_app.service.ExamService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
@@ -37,6 +38,9 @@ public class ExamController {
     @Autowired
     AliasRepository aliasRepository;
 
+    @Autowired
+    ExamService examService;
+
     @GetMapping(value = "/all", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> getAllExams() {
         List<Exam> allExams = examRepository.findAll();
@@ -55,11 +59,30 @@ public class ExamController {
         }
     }
 
+    @PutMapping(value = "/update/{examId}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Exam> updateExam(@PathVariable int examId, @Valid @RequestBody ExamDTO examData) throws NoResourceFoundException {
+        Exam existingExam = examService.updateExam(examId, examData);
+        return new ResponseEntity<>(existingExam, HttpStatus.OK);
+
+
+    }
+
     @PostMapping(value = "/add", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> addNewExam(@Valid @RequestBody ExamDTO examData) {
-        return null;
+    public ResponseEntity<Exam> addNewExam(@Valid @RequestBody ExamDTO examData) {
+        Exam exam = examService.createExam(examData);
+        return ResponseEntity.status(HttpStatus.CREATED).body(exam);
+    }
 
-
+    @DeleteMapping(value = "/delete/{examId}")
+    public ResponseEntity<?> deleteExam(@PathVariable int examId) throws NoResourceFoundException {
+        Exam exam = examRepository.findById(examId).orElse(null);
+        if (exam == null) {
+            String path = "/exams/delete/" + examId;
+            throw new NoResourceFoundException(HttpMethod.DELETE, path);
+        } else {
+            examRepository.deleteById(examId);
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+        }
     }
 
 
