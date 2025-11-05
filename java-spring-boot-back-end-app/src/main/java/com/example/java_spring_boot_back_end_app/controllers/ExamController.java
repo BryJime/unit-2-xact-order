@@ -41,11 +41,13 @@ public class ExamController {
     @Autowired
     ExamService examService;
 
+
     @GetMapping(value = "/all", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> getAllExams() {
         List<Exam> allExams = examRepository.findAll();
         return new ResponseEntity<>(allExams, HttpStatus.OK);
     }
+
 
     @GetMapping(value = "/details/{examId}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> getExamDetails(@PathVariable int examId) throws NoResourceFoundException {
@@ -59,19 +61,20 @@ public class ExamController {
         }
     }
 
+
     @PutMapping(value = "/update/{examId}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Exam> updateExam(@PathVariable int examId, @Valid @RequestBody ExamDTO examData) throws NoResourceFoundException {
         Exam existingExam = examService.updateExam(examId, examData);
         return new ResponseEntity<>(existingExam, HttpStatus.OK);
-
-
     }
+
 
     @PostMapping(value = "/add", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Exam> addNewExam(@Valid @RequestBody ExamDTO examData) {
         Exam exam = examService.createExam(examData);
         return ResponseEntity.status(HttpStatus.CREATED).body(exam);
     }
+
 
     @DeleteMapping(value = "/delete/{examId}")
     public ResponseEntity<?> deleteExam(@PathVariable int examId) throws NoResourceFoundException {

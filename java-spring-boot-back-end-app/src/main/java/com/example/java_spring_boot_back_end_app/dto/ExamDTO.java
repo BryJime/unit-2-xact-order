@@ -1,10 +1,9 @@
 package com.example.java_spring_boot_back_end_app.dto;
 
-import com.example.java_spring_boot_back_end_app.models.Anatomy;
+
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
-import java.util.List;
 
 public class ExamDTO {
 
@@ -31,11 +30,11 @@ public class ExamDTO {
     @Size(min = 1, max = 100, message = "Region must be between 1 and 100 characters")
     private String region;
 
-    private boolean isCommon;
+    private boolean common;
 
-    private boolean isShortcut;
+    private boolean shortcut;
 
-    public ExamDTO(String name, String views, String cptCode, String description, String anatomy, String alias, String region, boolean isCommon, boolean isShortcut) {
+    public ExamDTO(String name, String views, String cptCode, String description, String anatomy, String alias, String region, boolean common, boolean shortcut) {
         this.name = name;
         this.views = views;
         this.cptCode = cptCode;
@@ -43,8 +42,8 @@ public class ExamDTO {
         this.anatomy = anatomy;
         this.alias = alias;
         this.region = region;
-        this.isCommon = isCommon;
-        this.isShortcut = isShortcut;
+        this.common = common;
+        this.shortcut = shortcut;
     }
 
     public String getName() {
@@ -95,20 +94,20 @@ public class ExamDTO {
         this.region = region;
     }
 
-    public boolean getIsCommon() {
-        return isCommon;
+    public boolean getCommon() {
+        return common;
     }
 
-    public void setIsCommon(boolean isCommon) {
-        this.isCommon = isCommon;
+    public void setCommon(boolean common) {
+        this.common = common;
     }
 
-    public boolean getIsShortcut() {
-        return isShortcut;
+    public boolean getShortcut() {
+        return shortcut;
     }
 
-    public void setIsShortcut(boolean isShortcut) {
-        this.isShortcut = isShortcut;
+    public void setShortcut(boolean shortcut) {
+        this.shortcut = shortcut;
     }
 
     public String getAnatomy() {

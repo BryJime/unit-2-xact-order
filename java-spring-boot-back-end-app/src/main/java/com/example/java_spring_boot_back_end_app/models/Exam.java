@@ -1,6 +1,5 @@
 package com.example.java_spring_boot_back_end_app.models;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.util.Objects;
@@ -17,7 +16,7 @@ public class Exam {
 
     private String region;
 
-    private boolean isCommon;
+    private boolean common;
 
     private boolean shortcut;
 
@@ -44,11 +43,11 @@ public class Exam {
     public Exam() {
     }
 
-    public Exam(Integer id, String name, String region, boolean isCommon, boolean shortcut, CptCode cptCode, Anatomy anatomy, Views views, Description description, Alias alias) {
+    public Exam(Integer id, String name, String region, boolean common, boolean shortcut, CptCode cptCode, Anatomy anatomy, Views views, Description description, Alias alias) {
         this.id = id;
         this.name = name;
         this.region = region;
-        this.isCommon = isCommon;
+        this.common = common;
         this.shortcut = shortcut;
         this.cptCode = cptCode;
         this.anatomy = anatomy;
@@ -69,11 +68,11 @@ public class Exam {
         return region;
     }
 
-    public boolean isCommon() {
-        return isCommon;
+    public boolean getCommon() {
+        return common;
     }
 
-    public boolean isShortcut() {
+    public boolean getShortcut() {
         return shortcut;
     }
 
@@ -106,7 +105,7 @@ public class Exam {
     }
 
     public void setCommon(boolean common) {
-        isCommon = common;
+        this.common = common;
     }
 
     public void setShortcut(boolean shortcut) {

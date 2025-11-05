@@ -32,8 +32,8 @@ public class ExamService {
         Exam exam = new Exam();
         exam.setName(examDTO.getName());
         exam.setRegion(examDTO.getRegion());
-        exam.setCommon(examDTO.getIsCommon());
-        exam.setShortcut(examDTO.getIsShortcut());
+        exam.setCommon(examDTO.getCommon());
+        exam.setShortcut(examDTO.getShortcut());
 
 
         CptCode cpt = cptCodeRepository.findByCode(examDTO.getCptCode())
@@ -67,8 +67,8 @@ public class ExamService {
 
         exam.setName(examDTO.getName());
         exam.setRegion(examDTO.getRegion());
-        exam.setCommon(examDTO.getIsCommon());
-        exam.setShortcut(examDTO.getIsShortcut());
+        exam.setCommon(examDTO.getCommon());
+        exam.setShortcut(examDTO.getShortcut());
 
         CptCode cpt = cptCodeRepository.findByCode(examDTO.getCptCode())
                 .orElseGet(() -> cptCodeRepository.save(new CptCode(examDTO.getCptCode())));
@@ -89,6 +89,8 @@ public class ExamService {
         Alias alias = aliasRepository.findByName(examDTO.getAlias())
                 .orElseGet(() -> aliasRepository.save(new Alias(examDTO.getAlias())));
         exam.setAlias(alias);
+
+
 
         return examRepository.save(exam);
     }
