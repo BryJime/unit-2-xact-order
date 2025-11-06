@@ -23,6 +23,11 @@ function Header() {
                             ABOUT
                         </Link>
                     </section>
+                    <section className="header-admin">
+                        <Link to="/AdminLogin">
+                            ADMIN
+                        </Link>
+                    </section>
                 </section>
             </header>
         </>

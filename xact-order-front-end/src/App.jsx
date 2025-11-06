@@ -17,6 +17,8 @@ function App() {
           <Route path="/Shortcuts.jsx" element={<Shortcuts />} />
           <Route path="/About.jsx" element={<About />} />
           <Route path="/ExamsDisplay.jsx" element={<ExamsDisplay />} />
+          <Route path="/AdminLogin" element={<AdminLogin />} />
+          <Route path="/Admin" element={<Admin />} />
         </Routes>
       </Router>
     </>
