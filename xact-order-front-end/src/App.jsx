@@ -5,6 +5,8 @@ import Shortcuts from './components/Shortcuts'
 import About from './components/About'
 import Header from './components/Header'
 import ExamsDisplay from './components/ExamsDisplay'
+import AdminLogin from './components/AdminLogin'
+import Admin from './components/Admin'
 
 
 function App() {
