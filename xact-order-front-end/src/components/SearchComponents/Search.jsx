@@ -1,5 +1,5 @@
 import { useState } from "react";
-import ExamsData from "../ExamData/ExamsData_withCPT.js";
+import ExamsData from "../ExamData/ExamsData.js";
 import { useNavigate } from "react-router-dom";
 import Searchbar from "./Searchbar";
 import SearchRegion from "./SearchRegion";
@@ -56,7 +56,7 @@ function Search() {
         setinputValue(value);
 
         const exam = ExamsData.filter(exam => {
-            if (exam.alias.includes(value, 0)) {
+            if (exam.region.includes(value, 0)) {
                 return exam
             }
         })

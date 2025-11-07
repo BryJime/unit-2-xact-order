@@ -1,4 +1,4 @@
-import ExamsData from "./ExamData/ExamsData_withCPT.js";
+import ExamsData from "./ExamData/ExamsData.js";
 import Exam from "./Exam";
 import { useState } from "react";
 
