@@ -2,6 +2,9 @@
 
 function AddExamForm() {
 
+    
+
+
 
   return <form className="add-exam-form">
 
@@ -35,6 +38,7 @@ function AddExamForm() {
 
 
                 <button className="admin-button" type="reset">Clear</button>
+
                 <button className="admin-button" type="submit">Save Exam</button>
             </form>
 }
