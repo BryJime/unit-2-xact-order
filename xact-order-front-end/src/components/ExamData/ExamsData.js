@@ -1,185 +1,305 @@
 const ExamsData = [
-  // ABDOMEN
-  { id: 1, 
-    procedure: "ABDOMEN 2 VIEW", 
-    anatomy: "ABDOMEN", 
-    views: "UPRIGHT, KUB", 
-    alias: ["abdomen", "kub", "upright", "Abdomen"], 
-    region: "ABDOMEN", 
-    common: false, 
-    shortcut: false 
+  {
+    "id": 1,
+    "name": "Chest 2 View",
+    "region": "Chest",
+    "common": true,
+    "shortcut": true,
+    "cptCode": { "id": 1, "cptCode": "71046" },
+    "anatomy": { "id": 1, "name": "Chest" },
+    "views": { "id": 1, "name": "PA + Lateral" },
+    "description": { "id": 1, "text": "PA and lateral; include apices to costophrenic angles." },
+    "alias": { "id": 1, "name": "CXR" }
   },
-
-  { id: 2, procedure: "ABDOMEN ACUTE", anatomy: "ABDOMEN", views: "UPRIGHT, KUB, CHEST", alias: ["abdomen", "acute", "kub", "chest", "Abdomen"], region: "ABDOMEN", common: false, shortcut: false },
-  { id: 3, procedure: "ABDOMEN DECUBITUS", anatomy: "ABDOMEN", views: "LEFT LATERAL DECUBITUS", alias: ["abdomen", "decub", "lld", "Abdomen"], region: "ABDOMEN", common: false, shortcut: false },
-  { id: 4, procedure: "ABDOMEN UPRIGHT", anatomy: "ABDOMEN", views: "UPRIGHT", alias: ["abdomen", "upright", "Abdomen"], region: "ABDOMEN", common: false, shortcut: false },
-  { id: 5, procedure: "ABDOMEN, KUB PORTABLE", anatomy: "ABDOMEN", views: "AP (PORTABLE)", alias: ["abdomen", "kub", "portable", "Abdomen"], region: "ABDOMEN", common: false, shortcut: false },
-  { id: 6, procedure: "ABDOMEN KUB, FLAT PLATE", anatomy: "ABDOMEN", views: "AP (SUPINE)", alias: ["abdomen", "kub", "flat plate", "supine", "Abdomen"], region: "ABDOMEN", common: false, shortcut: false },
-
-  // ANKLE
-  { id: 7, procedure: "ANKLE LEFT 2 VIEW", anatomy: "ANKLE", views: "AP, LATERAL", alias: ["ankle", "left", "lt", "l ankle", "TibFib/Ankle"], region: "LOWER EXTREMITY", common: false, shortcut: false },
-  { id: 8, procedure: "ANKLE LEFT 3 VIEW", anatomy: "ANKLE", views: "AP, OBLIQUE, LATERAL", alias: ["ankle", "left", "lt", "l ankle", "TibFib/Ankle"], region: "LOWER EXTREMITY", common: true, shortcut: false },
-  { id: 9, procedure: "ANKLE RIGHT 2 VIEW", anatomy: "ANKLE", views: "AP, LATERAL", alias: ["ankle", "right", "rt", "r ankle", "TibFib/Ankle"], region: "LOWER EXTREMITY", common: false, shortcut: false },
-  { id: 10, procedure: "ANKLE RIGHT 3 VIEW", anatomy: "ANKLE", views: "AP, OBLIQUE, LATERAL", alias: ["ankle", "right", "rt", "r ankle", "TibFib/Ankle"], region: "LOWER EXTREMITY", common: true, shortcut: false },
-
-  // HIPS/PELVIS
-  { id: 11, procedure: "AP HIPS", anatomy: "HIPS", views: "AP BILATERAL", alias: ["hips", "bilateral", "Pelvis/Hips"], region: "PELVIS", common: false, shortcut: false },
-
-  // CERVICAL
-  { id: 12, procedure: "CERVICAL ONE VIEW", anatomy: "CERVICAL SPINE", views: "LATERAL", alias: ["c-spine", "cervical", "lat csp", "Cervical Spine"], region: "SPINE", common: false, shortcut: false },
-  { id: 13, procedure: "CERVICAL SPINE", anatomy: "CERVICAL SPINE", views: "AP, LATERAL, ODONTOID", alias: ["c-spine", "cervical", "Cervical Spine"], region: "SPINE", common: true, shortcut: false },
-  { id: 14, procedure: "CERVICAL-5 VIEW", anatomy: "CERVICAL SPINE", views: "AP, LATERAL, OBLIQUES, ODONTOID", alias: ["c-spine", "cervical", "5 view", "Cervical Spine"], region: "SPINE", common: false, shortcut: false },
-
-  // CHEST
-  { id: 15, procedure: "CHEST 2 VIEW FNRT-LAT W/APICAL LORDOTIC", anatomy: "CHEST", views: "PA, LATERAL, APICAL LORDOTIC", alias: ["chest", "pa", "lat", "lordotic", "Chest"], region: "CHEST", common: false, shortcut: false },
-  { id: 16, procedure: "CHEST DECUBITUS", anatomy: "CHEST", views: "LEFT/RIGHT LATERAL DECUBITUS", alias: ["chest", "decub", "Chest"], region: "CHEST", common: false, shortcut: false },
-  { id: 17, procedure: "CHEST EMPLOYEE", anatomy: "CHEST", views: "PA OR AP", alias: ["chest", "employee", "screening", "Chest"], region: "CHEST", common: false, shortcut: false },
-  { id: 18, procedure: "CHEST PA AND LAT 2 VIEW", anatomy: "CHEST", views: "PA, LATERAL", alias: ["chest", "pa lat", "2 view", "Chest"], region: "CHEST", common: false, shortcut: false },
-  { id: 19, procedure: "CHEST PORTABLE", anatomy: "CHEST", views: "AP (PORTABLE)", alias: ["chest", "portable", "ap", "Chest"], region: "CHEST", common: true, shortcut: false },
-  { id: 20, procedure: "CHEST-1 VIEW", anatomy: "CHEST", views: "PA OR AP", alias: ["chest", "single view", "Chest"], region: "CHEST", common: false, shortcut: false },
-
-  // CALCANEUS
-  { id: 21, procedure: "CALCANEUS LEFT 2 VIEW", anatomy: "CALCANEUS", views: "AXIAL, LATERAL", alias: ["calc", "heel", "left", "lt", "Foot/Toes"], region: "LOWER EXTREMITY", common: false, shortcut: false },
-  { id: 22, procedure: "CALCANEUS RIGHT 2 VIEW", anatomy: "CALCANEUS", views: "AXIAL, LATERAL", alias: ["calc", "heel", "right", "rt", "Foot/Toes"], region: "LOWER EXTREMITY", common: false, shortcut: false },
-
-  // CLAVICLE
-  { id: 23, procedure: "CLAVICLE LEFT 2 VIEW", anatomy: "CLAVICLE", views: "AP, AXIAL", alias: ["clavicle", "collarbone", "left", "lt", "Shoulder/Clavicle/Scapula"], region: "UPPER EXTREMITY", common: false, shortcut: false },
-  { id: 24, procedure: "CLAVICLE RIGHT 2 VIEW", anatomy: "CLAVICLE", views: "AP, AXIAL", alias: ["clavicle", "collarbone", "right", "rt", "Shoulder/Clavicle/Scapula"], region: "UPPER EXTREMITY", common: false, shortcut: false },
-
-  // ELBOW
-  { id: 25, procedure: "ELBOW 2 VIEW LEFT", anatomy: "ELBOW", views: "AP, LATERAL", alias: ["elbow", "left", "lt", "Elbow/Forearm"], region: "UPPER EXTREMITY", common: false, shortcut: false },
-  { id: 26, procedure: "ELBOW 2 VIEW RIGHT", anatomy: "ELBOW", views: "AP, LATERAL", alias: ["elbow", "right", "rt", "Elbow/Forearm"], region: "UPPER EXTREMITY", common: false, shortcut: false },
-  { id: 27, procedure: "ELBOW LEFT 3V OR MORE", anatomy: "ELBOW", views: "AP, OBLIQUE, LATERAL (+/- ADD'L)", alias: ["elbow", "left", "lt", "3v", "Elbow/Forearm"], region: "UPPER EXTREMITY", common: true, shortcut: false },
-  { id: 28, procedure: "ELBOW RIGHT 3V OR MORE", anatomy: "ELBOW", views: "AP, OBLIQUE, LATERAL (+/- ADD'L)", alias: ["elbow", "right", "rt", "3v", "Elbow/Forearm"], region: "UPPER EXTREMITY", common: true, shortcut: false },
-
-  // FEMUR
-  { id: 29, procedure: "FEMUR LEFT AP/LATERAL", anatomy: "FEMUR", views: "AP, LATERAL", alias: ["femur", "left", "lt", "Femur"], region: "LOWER EXTREMITY", common: true, shortcut: false },
-  { id: 30, procedure: "FEMUR RIGHT AP/LATERAL", anatomy: "FEMUR", views: "AP, LATERAL", alias: ["femur", "right", "rt", "Femur"], region: "LOWER EXTREMITY", common: true, shortcut: false },
-
-  // FINGERS (LEFT)
-  { id: 31, procedure: "FINGER L DIGIT 1-THUMB", anatomy: "FINGER", views: "AP, OBLIQUE, LATERAL", alias: ["finger", "thumb", "left", "lt", "digit 1", "Wrist/Hand/Fingers"], region: "UPPER EXTREMITY", common: false, shortcut: false },
-  { id: 32, procedure: "FINGER L DIGIT 3", anatomy: "FINGER", views: "AP, OBLIQUE, LATERAL", alias: ["finger", "left", "lt", "digit 3", "middle finger", "Wrist/Hand/Fingers"], region: "UPPER EXTREMITY", common: false, shortcut: false },
-  { id: 33, procedure: "FINGER L DIGIT 4", anatomy: "FINGER", views: "AP, OBLIQUE, LATERAL", alias: ["finger", "left", "lt", "digit 4", "ring finger", "Wrist/Hand/Fingers"], region: "UPPER EXTREMITY", common: false, shortcut: false },
-  { id: 34, procedure: "FINGER L DIGIT 5", anatomy: "FINGER", views: "AP, OBLIQUE, LATERAL", alias: ["finger", "left", "lt", "digit 5", "pinky", "Wrist/Hand/Fingers"], region: "UPPER EXTREMITY", common: false, shortcut: false },
-
-  // FINGERS (RIGHT)
-  { id: 35, procedure: "FINGER R DIGIT 1-THUMB", anatomy: "FINGER", views: "AP, OBLIQUE, LATERAL", alias: ["finger", "thumb", "right", "rt", "digit 1", "Wrist/Hand/Fingers"], region: "UPPER EXTREMITY", common: false, shortcut: false },
-  { id: 36, procedure: "FINGER R DIGIT 2", anatomy: "FINGER", views: "AP, OBLIQUE, LATERAL", alias: ["finger", "right", "rt", "digit 2", "index", "Wrist/Hand/Fingers"], region: "UPPER EXTREMITY", common: false, shortcut: false },
-  { id: 37, procedure: "FINGER R DIGIT 3", anatomy: "FINGER", views: "AP, OBLIQUE, LATERAL", alias: ["finger", "right", "rt", "digit 3", "Wrist/Hand/Fingers"], region: "UPPER EXTREMITY", common: false, shortcut: false },
-  { id: 38, procedure: "FINGER R DIGIT 4", anatomy: "FINGER", views: "AP, OBLIQUE, LATERAL", alias: ["finger", "right", "rt", "digit 4", "Wrist/Hand/Fingers"], region: "UPPER EXTREMITY", common: false, shortcut: false },
-  { id: 39, procedure: "FINGER R DIGIT 5", anatomy: "FINGER", views: "AP, OBLIQUE, LATERAL", alias: ["finger", "right", "rt", "digit 5", "Wrist/Hand/Fingers"], region: "UPPER EXTREMITY", common: false, shortcut: false },
-
-  // FEET
-  { id: 40, procedure: "FOOT AP BI LATERAL", anatomy: "FEET", views: "AP BILATERAL", alias: ["feet", "bilateral", "both", "Foot/Toes"], region: "LOWER EXTREMITY", common: false, shortcut: false },
-  { id: 41, procedure: "FOOT LEFT 2V", anatomy: "FOOT", views: "AP, LATERAL", alias: ["foot", "left", "lt", "2v", "Foot/Toes"], region: "LOWER EXTREMITY", common: false, shortcut: false },
-  { id: 42, procedure: "FOOT LEFT 3V", anatomy: "FOOT", views: "AP, OBLIQUE, LATERAL", alias: ["foot", "left", "lt", "3v", "Foot/Toes"], region: "LOWER EXTREMITY", common: false, shortcut: false },
-  { id: 43, procedure: "FOOT RIGHT 2V", anatomy: "FOOT", views: "AP, LATERAL", alias: ["foot", "right", "rt", "2v", "Foot/Toes"], region: "LOWER EXTREMITY", common: false, shortcut: false },
-  { id: 44, procedure: "FOOT RIGHT 3V", anatomy: "FOOT", views: "AP, OBLIQUE, LATERAL", alias: ["foot", "right", "rt", "3v", "Foot/Toes"], region: "LOWER EXTREMITY", common: false, shortcut: false },
-
-  // FOREARM
-  { id: 45, procedure: "FOREARM LEFT 2 VIEWS OR MORE", anatomy: "FOREARM", views: "AP, LATERAL (+/- ADD'L)", alias: ["forearm", "left", "lt", "Elbow/Forearm"], region: "UPPER EXTREMITY", common: true, shortcut: false },
-  { id: 46, procedure: "FOREARM RIGHT 2 VIEWS OF MORE", anatomy: "FOREARM", views: "AP, LATERAL (+/- ADD'L)", alias: ["forearm", "right", "rt", "Elbow/Forearm"], region: "UPPER EXTREMITY", common: true, shortcut: false },
-
-  // HANDS
-  { id: 47, procedure: "HAND LEFT 2V", anatomy: "HAND", views: "PA, LATERAL", alias: ["hand", "left", "lt", "2v", "Wrist/Hand/Fingers"], region: "UPPER EXTREMITY", common: false, shortcut: false },
-  { id: 48, procedure: "HAND LEFT 3V OR MORE", anatomy: "HAND", views: "PA, OBLIQUE, LATERAL (+/- ADD'L)", alias: ["hand", "left", "lt", "3v", "Wrist/Hand/Fingers"], region: "UPPER EXTREMITY", common: true, shortcut: false },
-  { id: 49, procedure: "HAND RIGHT 2V", anatomy: "HAND", views: "PA, LATERAL", alias: ["hand", "right", "rt", "2v", "Wrist/Hand/Fingers"], region: "UPPER EXTREMITY", common: false, shortcut: false },
-  { id: 50, procedure: "HAND RIGHT 3V OR MORE", anatomy: "HAND", views: "PA, OBLIQUE, LATERAL (+/- ADD'L)", alias: ["hand", "right", "rt", "3v", "Wrist/Hand/Fingers"], region: "UPPER EXTREMITY", common: true, shortcut: false },
-  { id: 51, procedure: "HANDS AP BI LATERAL", anatomy: "HANDS", views: "PA BILATERAL", alias: ["hands", "bilateral", "both", "Wrist/Hand/Fingers"], region: "UPPER EXTREMITY", common: false, shortcut: false },
-
-  // HIPS
-  { id: 52, procedure: "HIP LEFT 2V OR MORE", anatomy: "HIP", views: "AP, LATERAL (+/- PELVIS)", alias: ["hip", "left", "lt", "2v", "Pelvis/Hips"], region: "LOWER EXTREMITY", common: true, shortcut: false },
-  { id: 53, procedure: "HIP RIGHT 2V OR MORE", anatomy: "HIP", views: "AP, LATERAL (+/- PELVIS)", alias: ["hip", "right", "rt", "2v", "Pelvis/Hips"], region: "LOWER EXTREMITY", common: false, shortcut: false },
-  { id: 54, procedure: "HIPS BILAT W/ AP PELVIS", anatomy: "HIPS", views: "AP PELVIS + AP BOTH HIPS", alias: ["hips", "bilateral", "ap pelvis", "Pelvis/Hips"], region: "PELVIS", common: false, shortcut: false },
-
-  // HUMERUS
-  { id: 55, procedure: "HUMERUS LEFT 2V OR MORE", anatomy: "HUMERUS", views: "AP, LATERAL (+/- ADD'L)", alias: ["humerus", "left", "lt", "Humerus"], region: "UPPER EXTREMITY", common: true, shortcut: false },
-  { id: 56, procedure: "HUMERUS RIGHT 2V OR MORE", anatomy: "HUMERUS", views: "AP, LATERAL (+/- ADD'L)", alias: ["humerus", "right", "rt", "Humerus"], region: "UPPER EXTREMITY", common: true, shortcut: false },
-
-  // KNEE
-  { id: 57, procedure: "KNEE PATELLA LEFT 3 VIEW", anatomy: "KNEE", views: "AP, LATERAL, SUNRISE", alias: ["knee", "patella", "left", "lt", "sunrise", "Knee"], region: "LOWER EXTREMITY", common: true, shortcut: false },
-  { id: 58, procedure: "KNEE PATELLA RIGHT 3 VIEW", anatomy: "KNEE", views: "AP, LATERAL, SUNRISE", alias: ["knee", "patella", "right", "rt", "sunrise", "Knee"], region: "LOWER EXTREMITY", common: true, shortcut: false },
-  { id: 59, procedure: "KNEE-2 VIEW LEFT", anatomy: "KNEE", views: "AP, LATERAL", alias: ["knee", "left", "lt", "2v", "Knee"], region: "LOWER EXTREMITY", common: false, shortcut: false },
-  { id: 60, procedure: "KNEE-2 VIEW RIGHT", anatomy: "KNEE", views: "AP, LATERAL", alias: ["knee", "right", "rt", "2v", "Knee"], region: "LOWER EXTREMITY", common: false, shortcut: false },
-  { id: 61, procedure: "KNEE-3 VIEW LEFT", anatomy: "KNEE", views: "AP, OBLIQUE, LATERAL", alias: ["knee", "left", "lt", "3v", "Knee"], region: "LOWER EXTREMITY", common: true, shortcut: false },
-  { id: 62, procedure: "KNEE-3 VIEW RIGHT", anatomy: "KNEE", views: "AP, OBLIQUE, LATERAL", alias: ["knee", "right", "rt", "3v", "Knee"], region: "LOWER EXTREMITY", common: true, shortcut: false },
-  { id: 63, procedure: "KNEE-4 VIEW LEFT", anatomy: "KNEE", views: "AP, LATERAL, TUNNEL, SUNRISE", alias: ["knee", "left", "lt", "4v", "tunnel", "sunrise", "Knee"], region: "LOWER EXTREMITY", common: false, shortcut: false },
-  { id: 64, procedure: "KNEE-4 VIEW RIGHT", anatomy: "KNEE", views: "AP, LATERAL, TUNNEL, SUNRISE", alias: ["knee", "right", "rt", "4v", "tunnel", "sunrise", "Knee"], region: "LOWER EXTREMITY", common: false, shortcut: false },
-  { id: 65, procedure: "STANDING KNEES", anatomy: "KNEES", views: "AP STANDING BILATERAL", alias: ["knees", "weightbearing", "standing"], region: "LOWER EXTREMITY", common: false, shortcut: false },
-
-  // LUMBAR
-  { id: 66, procedure: "LUMBAR 5 VIEW", anatomy: "LUMBAR SPINE", views: "AP, OBLIQUES, LATERAL, SPOT", alias: ["lumbar", "l-spine", "5 view", "Lumbar Spine"], region: "SPINE", common: false, shortcut: false },
-  { id: 67, procedure: "LUMBAR COMPLETE FLEX-EXT", anatomy: "LUMBAR SPINE", views: "LATERAL FLEXION, LATERAL EXTENSION", alias: ["lumbar", "flex ext", "l-spine", "Lumbar Spine"], region: "SPINE", common: false, shortcut: false },
-  { id: 68, procedure: "LUMBAR ONE VIEW", anatomy: "LUMBAR SPINE", views: "LATERAL", alias: ["lumbar", "l-spine", "single view", "Lumbar Spine"], region: "SPINE", common: false, shortcut: false },
-  { id: 69, procedure: "LUMBAR SPINE", anatomy: "LUMBAR SPINE", views: "AP, LATERAL, SPOT", alias: ["lumbar", "l-spine", "Lumbar Spine"], region: "SPINE", common: true, shortcut: false },
-
-  // HEAD / ENT
-  { id: 70, procedure: "MANDIBLE COMP 4 VIEW", anatomy: "MANDIBLE", views: "PA, OBLIQUES, TOWNE", alias: ["mandible", "jaw", "4 view", "Facial/ENT"], region: "HEAD", common: false, shortcut: false },
-  { id: 71, procedure: "MASTOIDS COMP 4 VIEW", anatomy: "MASTOIDS", views: "TOWNES, LAW, STENVER, LATERAL", alias: ["mastoid", "temporal bone", "Facial/ENT"], region: "HEAD", common: false, shortcut: false },
-  { id: 72, procedure: "NASAL BONES COMPLETE", anatomy: "NASAL BONES", views: "WATERS, LATERAL", alias: ["nasal", "nose", "Facial/ENT"], region: "HEAD", common: false, shortcut: false },
-  { id: 73, procedure: "ORBITS COMP", anatomy: "ORBITS", views: "WATERS, CALDWELL, LATERAL", alias: ["orbits", "facial", "Facial/ENT"], region: "HEAD", common: false, shortcut: false },
-  { id: 74, procedure: "SINUSES 3 VIEWS", anatomy: "SINUSES", views: "WATERS, CALDWELL, LATERAL", alias: ["sinus", "paranasal", "Facial/ENT"], region: "HEAD", common: false, shortcut: false },
-  { id: 75, procedure: "SKULL 4 VIEW", anatomy: "SKULL", views: "PA (CALDWELL), LATERAL, AP (TOWNE), SUBMENTOVERTEX", alias: ["skull", "series", "Skull"], region: "HEAD", common: false, shortcut: false },
-  { id: 76, procedure: "SKULL LESS THAN 4 VIEWS", anatomy: "SKULL", views: "LIMITED (SPECIFY)", alias: ["skull", "limited", "Skull"], region: "HEAD", common: false, shortcut: false },
-  { id: 77, procedure: "SOFT TISSUE STUDY NECK", anatomy: "NECK SOFT TISSUE", views: "AP, LATERAL", alias: ["soft tissue neck", "airway", "stn", "Facial/ENT"], region: "HEAD", common: false, shortcut: false },
-  { id: 78, procedure: "T-M JOINTS BI LATERAL", anatomy: "TM JOINTS", views: "OPEN/CLOSED BILATERAL", alias: ["tmj", "temporomandibular", "bilateral", "Facial/ENT"], region: "HEAD", common: false, shortcut: false },
-
-  // PELVIS / SI / SC / STERNUM / RIBS
-  { id: 79, procedure: "PELVIS", anatomy: "PELVIS", views: "AP", alias: ["pelvis", "Pelvis/Hips"], region: "PELVIS", common: true, shortcut: false },
-  { id: 80, procedure: "PELVIS 3 VIEWS", anatomy: "PELVIS", views: "AP, INLET, OUTLET", alias: ["pelvis", "inlet", "outlet", "Pelvis/Hips"], region: "PELVIS", common: false, shortcut: false },
-  { id: 81, procedure: "PELVIS STAND COMP", anatomy: "PELVIS", views: "AP STANDING", alias: ["pelvis", "standing", "weightbearing", "Pelvis/Hips"], region: "PELVIS", common: false, shortcut: false },
-  { id: 82, procedure: "SACRO-ILLIAC JOINTS", anatomy: "SI JOINTS", views: "AP, OBLIQUES", alias: ["si joints", "sacroiliac", "Sacrum/Other"], region: "PELVIS", common: false, shortcut: false },
-  { id: 83, procedure: "SACRUM AND COCCYX", anatomy: "SACRUM & COCCYX", views: "AP SACRUM, AP COCCYX, LATERAL", alias: ["sacrum", "coccyx", "tailbone", "Sacrum/Other"], region: "SPINE", common: true, shortcut: false },
-  { id: 84, procedure: "STERNO-CLAV JOINTS", anatomy: "STERNOCLAVICULAR JOINTS", views: "AP, SERENDIPITY", alias: ["sc joints", "sternoclavicular", "Ribs/Sternum/SC Joints"], region: "CHEST", common: false, shortcut: false },
-  { id: 85, procedure: "STERNUM", anatomy: "STERNUM", views: "RAO, LATERAL", alias: ["sternum", "Ribs/Sternum/SC Joints"], region: "CHEST", common: false, shortcut: false },
-  { id: 86, procedure: "RIBS BILATERAL", anatomy: "RIBS", views: "AP UPPER/LOWER BILATERAL", alias: ["ribs", "bilateral", "Ribs/Sternum/SC Joints"], region: "CHEST", common: false, shortcut: false },
-  { id: 87, procedure: "RIBS BILATERAL W/ CHEST 1V", anatomy: "RIBS", views: "BILATERAL RIBS + CHEST AP/PA", alias: ["ribs", "bilateral", "with chest", "Ribs/Sternum/SC Joints"], region: "CHEST", common: false, shortcut: false },
-  { id: 88, procedure: "RIBS UNILATERAL LEFT W/ CHEST 1V", anatomy: "RIBS", views: "LEFT RIBS + CHEST AP/PA", alias: ["ribs", "left", "lt", "with chest", "Ribs/Sternum/SC Joints"], region: "CHEST", common: false, shortcut: false },
-  { id: 89, procedure: "RIBS UNILATERAL LT", anatomy: "RIBS", views: "LEFT RIBS SERIES", alias: ["ribs", "left", "lt", "Ribs/Sternum/SC Joints"], region: "CHEST", common: false, shortcut: false },
-  { id: 90, procedure: "RIBS UNILATERAL RIGHT W/ CHEST 1V", anatomy: "RIBS", views: "RIGHT RIBS + CHEST AP/PA", alias: ["ribs", "right", "rt", "with chest", "Ribs/Sternum/SC Joints"], region: "CHEST", common: false, shortcut: false },
-  { id: 91, procedure: "RIBS UNILATERAL RT", anatomy: "RIBS", views: "RIGHT RIBS SERIES", alias: ["ribs", "right", "rt", "Ribs/Sternum/SC Joints"], region: "CHEST", common: false, shortcut: false },
-
-  // SCAPULA
-  { id: 92, procedure: "SCAPULA LEFT 2 VIEW", anatomy: "SCAPULA", views: "AP, LATERAL (Y)", alias: ["scapula", "left", "lt", "Shoulder/Clavicle/Scapula"], region: "UPPER EXTREMITY", common: true, shortcut: false },
-  { id: 93, procedure: "SCAPULA RIGHT 2 VIEW", anatomy: "SCAPULA", views: "AP, LATERAL (Y)", alias: ["scapula", "right", "rt", "Shoulder/Clavicle/Scapula"], region: "UPPER EXTREMITY", common: true, shortcut: false },
-
-  // SCOLIOSIS / THORACIC
-  { id: 94, procedure: "SCOLIOSIS SERIES", anatomy: "SPINE", views: "PA/LAT FULL SPINE", alias: ["scoliosis", "full spine", "long cassette", "Sacrum/Other"], region: "SPINE", common: false, shortcut: false },
-  { id: 95, procedure: "T-SPINE ONE VIEW", anatomy: "THORACIC SPINE", views: "LATERAL", alias: ["t-spine", "thoracic", "Thoracic Spine"], region: "SPINE", common: false, shortcut: false },
-  { id: 96, procedure: "THORACIC 2 VIEW", anatomy: "THORACIC SPINE", views: "AP, LATERAL", alias: ["t-spine", "thoracic", "2 view", "Thoracic Spine"], region: "SPINE", common: false, shortcut: false },
-  { id: 97, procedure: "THORACIC SPINE", anatomy: "THORACIC SPINE", views: "AP, LATERAL (+/- SWIMMERS)", alias: ["t-spine", "thoracic", "Thoracic Spine"], region: "SPINE", common: true, shortcut: false },
-
-  // SHOULDER
-  { id: 98, procedure: "SHOULDER LEFT 1 VIEW", anatomy: "SHOULDER", views: "AP", alias: ["shoulder", "left", "lt", "Shoulder/Clavicle/Scapula"], region: "UPPER EXTREMITY", common: true, shortcut: false },
-  { id: 99, procedure: "SHOULDER LEFT 2 VIEW", anatomy: "SHOULDER", views: "AP, LATERAL/Y", alias: ["shoulder", "left", "lt", "2v", "Shoulder/Clavicle/Scapula"], region: "UPPER EXTREMITY", common: true, shortcut: false },
-  { id: 100, procedure: "SHOULDER RIGHT 1 VIEW", anatomy: "SHOULDER", views: "AP", alias: ["shoulder", "right", "rt", "Shoulder/Clavicle/Scapula"], region: "UPPER EXTREMITY", common: false, shortcut: false },
-  { id: 101, procedure: "SHOULDER RIGHT 2 VIEW", anatomy: "SHOULDER", views: "AP, LATERAL/Y", alias: ["shoulder", "right", "rt", "2v", "Shoulder/Clavicle/Scapula"], region: "UPPER EXTREMITY", common: true, shortcut: false },
-  { id: 102, procedure: "SHOULDER WT BEARING BILATERAL", anatomy: "SHOULDERS", views: "AP BILATERAL WEIGHTBEARING", alias: ["shoulders", "weightbearing", "bilateral", "Shoulder/Clavicle/Scapula"], region: "UPPER EXTREMITY", common: false, shortcut: false },
-
-  // WRIST
-  { id: 103, procedure: "WRIST LEFT 2 VIEW", anatomy: "WRIST", views: "PA, LATERAL", alias: ["wrist", "left", "lt", "2v", "Wrist/Hand/Fingers"], region: "UPPER EXTREMITY", common: false, shortcut: false },
-  { id: 104, procedure: "WRIST LEFT 3V OR MORE", anatomy: "WRIST", views: "PA, OBLIQUE, LATERAL (+/- NAVICULAR)", alias: ["wrist", "left", "lt", "3v", "Wrist/Hand/Fingers"], region: "UPPER EXTREMITY", common: true, shortcut: false },
-  { id: 105, procedure: "WRIST PA BILATERAL", anatomy: "WRISTS", views: "PA BILATERAL", alias: ["wrist", "wrists", "bilateral", "Wrist/Hand/Fingers"], region: "UPPER EXTREMITY", common: false, shortcut: false },
-  { id: 106, procedure: "WRIST RIGHT 2 VIEW", anatomy: "WRIST", views: "PA, LATERAL", alias: ["wrist", "right", "rt", "2v", "Wrist/Hand/Fingers"], region: "UPPER EXTREMITY", common: false, shortcut: false },
-  { id: 107, procedure: "WRIST RIGHT 3V OR MORE", anatomy: "WRIST", views: "PA, OBLIQUE, LATERAL (+/- NAVICULAR)", alias: ["wrist", "right", "rt", "3v", "Wrist/Hand/Fingers"], region: "UPPER EXTREMITY", common: true, shortcut: false },
-
-  // TIB/FIB
-  { id: 108, procedure: "TIBIA AND FIBULA LEFT 2 VIEW", anatomy: "TIB-FIB", views: "AP, LATERAL", alias: ["tib-fib", "left", "lt", "TibFib/Ankle"], region: "LOWER EXTREMITY", common: true, shortcut: false },
-  { id: 109, procedure: "TIBIA AND FIBULA RIGHT 2 VIEW", anatomy: "TIB-FIB", views: "AP, LATERAL", alias: ["tib-fib", "right", "rt", "TibFib/Ankle"], region: "LOWER EXTREMITY", common: true, shortcut: false },
-
-  // TOES (LEFT)
-  { id: 110, procedure: "TOES L DIGIT 1 GREAT", anatomy: "TOE", views: "AP, OBLIQUE, LATERAL", alias: ["toe", "great toe", "left", "lt", "digit 1", "Foot/Toes"], region: "LOWER EXTREMITY", common: false, shortcut: false },
-  { id: 111, procedure: "TOES L DIGIT 2", anatomy: "TOE", views: "AP, OBLIQUE, LATERAL", alias: ["toe", "left", "lt", "digit 2", "Foot/Toes"], region: "LOWER EXTREMITY", common: false, shortcut: false },
-  { id: 112, procedure: "TOES L DIGIT 3", anatomy: "TOE", views: "AP, OBLIQUE, LATERAL", alias: ["toe", "left", "lt", "digit 3", "Foot/Toes"], region: "LOWER EXTREMITY", common: false, shortcut: false },
-  { id: 113, procedure: "TOES L DIGIT 4", anatomy: "TOE", views: "AP, OBLIQUE, LATERAL", alias: ["toe", "left", "lt", "digit 4", "Foot/Toes"], region: "LOWER EXTREMITY", common: false, shortcut: false },
-  { id: 114, procedure: "TOES L DIGIT 5", anatomy: "TOE", views: "AP, OBLIQUE, LATERAL", alias: ["toe", "left", "lt", "digit 5", "Foot/Toes"], region: "LOWER EXTREMITY", common: false, shortcut: false },
-
-  // TOES (RIGHT)
-  { id: 115, procedure: "TOES R DIGIT 1 GREAT", anatomy: "TOE", views: "AP, OBLIQUE, LATERAL", alias: ["toe", "great toe", "right", "rt", "digit 1", "Foot/Toes"], region: "LOWER EXTREMITY", common: false, shortcut: false },
-  { id: 116, procedure: "TOES R DIGIT 2", anatomy: "TOE", views: "AP, OBLIQUE, LATERAL", alias: ["toe", "right", "rt", "digit 2", "Foot/Toes"], region: "LOWER EXTREMITY", common: false, shortcut: false },
-  { id: 117, procedure: "TOES R DIGIT 3", anatomy: "TOE", views: "AP, OBLIQUE, LATERAL", alias: ["toe", "right", "rt", "digit 3", "Foot/Toes"], region: "LOWER EXTREMITY", common: false, shortcut: false },
-  { id: 118, procedure: "TOES R DIGIT 4", anatomy: "TOE", views: "AP, OBLIQUE, LATERAL", alias: ["toe", "right", "rt", "digit 4", "Foot/Toes"], region: "LOWER EXTREMITY", common: false, shortcut: false },
-  { id: 119, procedure: "TOES R DIGIT 5", anatomy: "TOE", views: "AP, OBLIQUE, LATERAL", alias: ["toe", "right", "rt", "digit 5", "Foot/Toes"], region: "LOWER EXTREMITY", common: false, shortcut: false },
+  {
+    "id": 2,
+    "name": "Chest 1 View",
+    "region": "Chest",
+    "common": false,
+    "shortcut": false,
+    "cptCode": { "id": 2, "cptCode": "71045" },
+    "anatomy": { "id": 1, "name": "Chest" },
+    "views": { "id": 2, "name": "AP Portable" },
+    "description": { "id": 2, "text": "AP supine/upright; include apices to costophrenic angles." },
+    "alias": { "id": 2, "name": "Portable Chest" }
+  },
+  {
+    "id": 3,
+    "name": "C-Spine 2-3 View",
+    "region": "Cervical Spine",
+    "common": false,
+    "shortcut": false,
+    "cptCode": { "id": 3, "cptCode": "72040" },
+    "anatomy": { "id": 2, "name": "Cervical Spine" },
+    "views": { "id": 3, "name": "AP + Lat + Odontoid" },
+    "description": { "id": 3, "text": "AP, lateral, and odontoid; include C1–C7." },
+    "alias": { "id": 3, "name": "C-Spine Basic" }
+  },
+  {
+    "id": 4,
+    "name": "Abdomen KUB",
+    "region": "Abdomen",
+    "common": false,
+    "shortcut": false,
+    "cptCode": { "id": 4, "cptCode": "74018" },
+    "anatomy": { "id": 3, "name": "Abdomen" },
+    "views": { "id": 4, "name": "AP Supine" },
+    "description": { "id": 4, "text": "Center at iliac crest; include diaphragm + symphysis." },
+    "alias": { "id": 4, "name": "KUB" }
+  },
+  {
+    "id": 5,
+    "name": "Foot 3 View",
+    "region": "Lower Extremity",
+    "common": false,
+    "shortcut": false,
+    "cptCode": { "id": 5, "cptCode": "73630" },
+    "anatomy": { "id": 4, "name": "Foot" },
+    "views": { "id": 5, "name": "AP + Lat + Oblique" },
+    "description": { "id": 5, "text": "Include toes to calcaneus." },
+    "alias": { "id": 5, "name": "Foot Complete" }
+  },
+  {
+    "id": 6,
+    "name": "Hand 3 View",
+    "region": "Upper Extremity",
+    "common": true,
+    "shortcut": false,
+    "cptCode": { "id": 6, "cptCode": "73130" },
+    "anatomy": { "id": 5, "name": "Hand" },
+    "views": { "id": 6, "name": "PA + Lat + Oblique" },
+    "description": { "id": 6, "text": "Fingers to distal radius; true oblique." },
+    "alias": { "id": 6, "name": "Hand Complete" }
+  },
+  {
+    "id": 7,
+    "name": "Wrist 3 View",
+    "region": "Upper Extremity",
+    "common": false,
+    "shortcut": false,
+    "cptCode": { "id": 7, "cptCode": "73110" },
+    "anatomy": { "id": 6, "name": "Wrist" },
+    "views": { "id": 7, "name": "PA + Lat + Oblique" },
+    "description": { "id": 7, "text": "Include distal forearm; lateral thumb up." },
+    "alias": { "id": 7, "name": "Wrist Complete" }
+  },
+  {
+    "id": 8,
+    "name": "Pelvis 1-2 View",
+    "region": "Pelvis",
+       "common": false,
+    "shortcut": false,
+    "cptCode": { "id": 8, "cptCode": "72170" },
+    "anatomy": { "id": 7, "name": "Pelvis" },
+    "views": { "id": 8, "name": "AP" },
+    "description": { "id": 8, "text": "Include iliac crest through proximal femora." },
+    "alias": { "id": 8, "name": "Pelvis AP" }
+  },
+  {
+    "id": 9,
+    "name": "Hip 2-3 View",
+    "region": "Pelvis",
+    "common": false,
+    "shortcut": false,
+    "cptCode": { "id": 9, "cptCode": "73502" },
+    "anatomy": { "id": 8, "name": "Hip" },
+    "views": { "id": 9, "name": "AP + Frog" },
+    "description": { "id": 9, "text": "Center over femoral head; frog lateral." },
+    "alias": { "id": 9, "name": "Hip Basic" }
+  },
+  {
+    "id": 10,
+    "name": "Knee 4 View",
+    "region": "Lower Extremity",
+    "common": true,
+    "shortcut": false,
+    "cptCode": { "id": 10, "cptCode": "73564" },
+    "anatomy": { "id": 9, "name": "Knee" },
+    "views": { "id": 10, "name": "AP + Lat + Tunnel + Sunrise" },
+    "description": { "id": 10, "text": "Include joint; patella in profile." },
+    "alias": { "id": 10, "name": "Knee Complete" }
+  },
+  {
+    "id": 11,
+    "name": "Ankle 3 View",
+    "region": "Lower Extremity",
+    "common": true,
+    "shortcut": true,
+    "cptCode": { "id": 11, "cptCode": "73610" },
+    "anatomy": { "id": 10, "name": "Ankle" },
+    "views": { "id": 11, "name": "AP + Lat + Mortise" },
+    "description": { "id": 11, "text": "Include distal tibfib + calcaneus." },
+    "alias": { "id": 11, "name": "Ankle Complete" }
+  },
+  {
+    "id": 12,
+    "name": "T-Spine 2-3 View",
+    "region": "Thoracic Spine",
+    "common": false,
+    "shortcut": false,
+    "cptCode": { "id": 12, "cptCode": "72072" },
+    "anatomy": { "id": 11, "name": "Thoracic Spine" },
+    "views": { "id": 12, "name": "AP + Lat" },
+    "description": { "id": 12, "text": "Center at T7; include C7–L1." },
+    "alias": { "id": 12, "name": "T-Spine Basic" }
+  },
+  {
+    "id": 13,
+    "name": "L-Spine 2-3 View",
+    "region": "Lumbar Spine",
+    "common": false,
+    "shortcut": false,
+    "cptCode": { "id": 13, "cptCode": "72100" },
+    "anatomy": { "id": 12, "name": "Lumbar Spine" },
+    "views": { "id": 13, "name": "AP + Lat" },
+    "description": { "id": 13, "text": "Include T12–S1." },
+    "alias": { "id": 13, "name": "L-Spine Basic" }
+  },
+  {
+    "id": 14,
+    "name": "Shoulder 3 View",
+    "region": "Upper Extremity",
+    "common": false,
+    "shortcut": false,
+    "cptCode": { "id": 14, "cptCode": "73030" },
+    "anatomy": { "id": 13, "name": "Shoulder" },
+    "views": { "id": 14, "name": "AP Int + AP Ext + Y" },
+    "description": { "id": 14, "text": "Include proximal humerus + AC." },
+    "alias": { "id": 14, "name": "Shoulder Complete" }
+  },
+  {
+    "id": 15,
+    "name": "Elbow 3 View",
+    "region": "Upper Extremity",
+    "common": false,
+    "shortcut": false,
+    "cptCode": { "id": 15, "cptCode": "73080" },
+    "anatomy": { "id": 14, "name": "Elbow" },
+    "views": { "id": 15, "name": "AP + Lat + Oblique" },
+    "description": { "id": 15, "text": "Include distal humerus + proximal radius/ulna." },
+    "alias": { "id": 15, "name": "Elbow Complete" }
+  },
+  {
+    "id": 16,
+    "name": "Forearm 2 View",
+    "region": "Upper Extremity",
+    "common": false,
+    "shortcut": false,
+    "cptCode": { "id": 16, "cptCode": "73090" },
+    "anatomy": { "id": 15, "name": "Forearm" },
+    "views": { "id": 16, "name": "AP + Lat" },
+    "description": { "id": 16, "text": "Include elbow + wrist joints." },
+    "alias": { "id": 16, "name": "Forearm 2V" }
+  },
+  {
+    "id": 17,
+    "name": "Humerus 2 View",
+    "region": "Upper Extremity",
+    "common": false,
+    "shortcut": false,
+    "cptCode": { "id": 17, "cptCode": "73060" },
+    "anatomy": { "id": 16, "name": "Humerus" },
+    "views": { "id": 17, "name": "AP + Lat" },
+    "description": { "id": 17, "text": "Shoulder through elbow." },
+    "alias": { "id": 17, "name": "Humerus 2V" }
+  },
+  {
+    "id": 18,
+    "name": "Fingers 3 View",
+    "region": "Upper Extremity",
+    "common": false,
+    "shortcut": false,
+    "cptCode": { "id": 18, "cptCode": "73140" },
+    "anatomy": { "id": 17, "name": "Digits" },
+    "views": { "id": 18, "name": "PA + Lat + Oblique" },
+    "description": { "id": 18, "text": "Include fingertip through MCP." },
+    "alias": { "id": 18, "name": "Finger Complete" }
+  },
+  {
+    "id": 19,
+    "name": "Toes 3 View",
+    "region": "Lower Extremity",
+    "common": false,
+    "shortcut": false,
+    "cptCode": { "id": 19, "cptCode": "73660" },
+    "anatomy": { "id": 18, "name": "Toes" },
+    "views": { "id": 19, "name": "AP + Oblique + Lat" },
+    "description": { "id": 19, "text": "Include the toe in question + MTP." },
+    "alias": { "id": 19, "name": "Toe Complete" }
+  },
+  {
+    "id": 20,
+    "name": "Sinuses 3-4 View",
+    "region": "Head",
+    "common": false,
+    "shortcut": false,
+    "cptCode": { "id": 20, "cptCode": "70220" },
+    "anatomy": { "id": 19, "name": "Sinuses" },
+    "views": { "id": 20, "name": "Waters + Caldwell + Lat" },
+    "description": { "id": 20, "text": "Include maxillary, frontal, and sphenoid sinuses." },
+    "alias": { "id": 20, "name": "Sinus Series" }
+  },
+  {
+    "id": 21,
+    "name": "Orbits 4 View",
+    "region": "Head",
+    "common": false,
+    "shortcut": false,
+    "cptCode": { "id": 21, "cptCode": "70200" },
+    "anatomy": { "id": 20, "name": "Orbits" },
+    "views": { "id": 21, "name": "Caldwell + Waters + Lat" },
+    "description": { "id": 21, "text": "Include both orbits to evaluate for foreign body." },
+    "alias": { "id": 21, "name": "Orbits FB" }
+  },
+  {
+    "id": 22,
+    "name": "Ribs 3-4 View",
+    "region": "Chest",
+    "common": false,
+    "shortcut": false,
+    "cptCode": { "id": 22, "cptCode": "71111" },
+    "anatomy": { "id": 1, "name": "Chest" },
+    "views": { "id": 22, "name": "PA Chest + Oblique" },
+    "description": { "id": 22, "text": "Include suspected rib area bilaterally as needed." },
+    "alias": { "id": 22, "name": "Rib Series" }
+  },
+  {
+    "id": 23,
+    "name": "Sacroiliac Joints 3 View",
+    "region": "Pelvis",
+    "common": false,
+    "shortcut": false,
+    "cptCode": { "id": 23, "cptCode": "72202" },
+    "anatomy": { "id": 7, "name": "Pelvis" },
+    "views": { "id": 23, "name": "AP + Obliques" },
+    "description": { "id": 23, "text": "Include both SI joints; 15° obliques." },
+    "alias": { "id": 23, "name": "SI Joints" }
+  },
+  {
+    "id": 24,
+    "name": "Abdomen Acute Series",
+    "region": "Abdomen",
+    "common": false,
+    "shortcut": false,
+    "cptCode": { "id": 24, "cptCode": "74022" },
+    "anatomy": { "id": 3, "name": "Abdomen" },
+    "views": { "id": 24, "name": "Supine + Upright + Chest" },
+    "description": { "id": 24, "text": "Evaluate gas pattern + free air; includes chest." },
+    "alias": { "id": 24, "name": "Acute Abdomen Series" }
+  },
+  {
+    "id": 25,
+    "name": "Chest for PICC Line",
+    "region": "Chest",
+    "common": false,
+    "shortcut": true,
+    "cptCode": { "id": 25, "cptCode": "71045" },
+    "anatomy": { "id": 1, "name": "Chest" },
+    "views": { "id": 25, "name": "AP" },
+    "description": { "id": 25, "text": "Portable chest to evaluate PICC tip location." },
+    "alias": { "id": 25, "name": "Line Check" }
+  }
 ];
+
 
 export default ExamsData;
