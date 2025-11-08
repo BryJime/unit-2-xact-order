@@ -1,7 +1,7 @@
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
 import Exam from "./Exam";
-import ExamsData from "./ExamData/ExamsData_withCPT.js";
+import ExamsData from "./ExamData/ExamsData.js";
 
 function ExamsDisplay() {
 
@@ -23,7 +23,7 @@ function ExamsDisplay() {
                         const addShortcut = () => {
                             if (data.shortcut === false) {
                                 for (let exam of ExamsData) {
-                                    if (exam.procedure === data.procedure) {
+                                    if (exam.name === data.name) {
                                         exam.shortcut = true
                                          setIsActive(true);
                                     }
@@ -32,7 +32,7 @@ function ExamsDisplay() {
                             }
                         }
 
-                        return <Exam key={data.id} procedure={data.procedure} views={data.views} cpt={data.cpt} add={addShortcut} button="ADD SHORTCUT" isActive={isActive} setIsActive={setIsActive} />
+                        return <Exam key={data.id} procedure={data.name} views={data.views.name} cpt={data.cptCode.cptCode} add={addShortcut} button="ADD SHORTCUT" isActive={isActive} setIsActive={setIsActive} description={data.description.text} />
                     })}
                 </div>
             </div>

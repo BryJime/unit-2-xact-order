@@ -5,6 +5,8 @@ import Shortcuts from './components/Shortcuts'
 import About from './components/About'
 import Header from './components/Header'
 import ExamsDisplay from './components/ExamsDisplay'
+import AdminLogin from './components/AdminLogin'
+import Admin from './components/Admin'
 
 
 function App() {
@@ -17,6 +19,8 @@ function App() {
           <Route path="/Shortcuts.jsx" element={<Shortcuts />} />
           <Route path="/About.jsx" element={<About />} />
           <Route path="/ExamsDisplay.jsx" element={<ExamsDisplay />} />
+          <Route path="/AdminLogin" element={<AdminLogin />} />
+          <Route path="/Admin" element={<Admin />} />
         </Routes>
       </Router>
     </>
