@@ -1,9 +1,11 @@
 import ExamsData from "./ExamData/ExamsData";
 import AddExamForm from "./AddExamForm";
+import { useState } from "react";
 
 
 function Admin() {
-    
+
+    const [ examList, setExamList] = useState(ExamsData);
 
     let allExams = ExamsData.map(exam => {
 
@@ -20,12 +22,15 @@ function Admin() {
 
     })
     
+    let refreshExamList = () => {
+        setExamList([...ExamsData]);
+    }
 
 
 
     return (
         <div>
-            <AddExamForm />
+            <AddExamForm reRender={refreshExamList}/>
 
             <hr className="line" />
 

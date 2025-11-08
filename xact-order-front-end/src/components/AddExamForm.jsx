@@ -3,7 +3,7 @@ import ExamsData from "./ExamData/ExamsData";
 
 
 
-function AddExamForm() {
+function AddExamForm( { reRender } ) {
 
     let initialExamData = {};
 
@@ -11,7 +11,7 @@ function AddExamForm() {
 
 
     const handleChange = (e) => {
-        
+        e.preventDefault(); 
         let updatedExamData = { ...examData,
         [e.target.name]: e.target.value
         };
@@ -25,6 +25,7 @@ function AddExamForm() {
         ExamsData.push(examData);
         
         // Submit examData to the server or perform other actions
+        reRender();
     }
 
     console.log(ExamsData);
@@ -62,7 +63,7 @@ function AddExamForm() {
 
                 <button className="admin-button" type="reset">Clear</button>
 
-                <button className="admin-button" type="submit" onClick={saveExam}>Save Exam</button>
+                <button className="admin-button" type="submit" onClick={saveExam} >Save Exam</button>
             </form>
 }
 
