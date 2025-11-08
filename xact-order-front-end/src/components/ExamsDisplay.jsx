@@ -23,7 +23,7 @@ function ExamsDisplay() {
                         const addShortcut = () => {
                             if (data.shortcut === false) {
                                 for (let exam of ExamsData) {
-                                    if (exam.procedure === data.procedure) {
+                                    if (exam.name === data.name) {
                                         exam.shortcut = true
                                          setIsActive(true);
                                     }

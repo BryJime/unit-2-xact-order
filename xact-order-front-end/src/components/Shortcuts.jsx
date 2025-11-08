@@ -34,8 +34,8 @@ function Shortcuts() {
                 {examValues.map((data) => {
                     if (data.shortcut === true) {
                         shortcutButton = "REMOVE SHORTCUT";
-                        return <Exam key={data.id} procedure={data.procedure} views={data.views} cpt={data.cpt} button={shortcutButton} add={() => removeShortcut(data.id)} />
-                    }
+                        return <Exam key={data.id} procedure={data.name} views={data.views.name} cpt={data.cptCode.cptCode} button={shortcutButton} add={() => removeShortcut(data.id)} />
+                    } 
                 })}
             </div>
         </>
