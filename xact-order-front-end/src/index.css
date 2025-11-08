@@ -174,16 +174,46 @@ img {
 
 .exam-display {
   display: flex;
-  height: 10em;
+  flex-direction: column; /* Stack content vertically */
+  align-items: flex-start; /* Align items to the start */
+  justify-content: flex-start; /* Ensure content starts at the top */
   width: auto;
-  
-  border-radius: 30px;  
-  overflow: hidden;
-  justify-content: space-evenly;
-  margin-top: 3em; 
-  margin-bottom: 3em; 
+  border-radius: 30px;
+  overflow: hidden; /* Prevent content from overflowing */
+  margin-top: 3em;
+  margin-bottom: 3em;
   background-color: rgb(67, 72, 102);
-  position: relative; 
+  position: relative; /* Ensure relative positioning for child elements */
+  transition: all 0.3s ease;
+}
+
+.exam-display:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
+  cursor: pointer;
+}
+
+.exam-display-expanded {
+  width: 100%; /* Ensure it takes the full width of the card */
+  margin-top: 2em; /* Add spacing between the card content and description */
+  padding: 1em; /* Add padding for better readability */
+}
+
+.exam-display-description {
+  position: absolute;
+  bottom: 1em;
+  left: 1em;
+  right: 1em;
+  font-size: 1.2em;
+  padding-left: 1em;
+  color: rgb(225, 241, 255);
+}
+
+.exam-display-header {  
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .exam-display-procedure {

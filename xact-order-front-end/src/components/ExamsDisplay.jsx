@@ -32,7 +32,7 @@ function ExamsDisplay() {
                             }
                         }
 
-                        return <Exam key={data.id} procedure={data.name} views={data.views.name} cpt={data.cptCode.cptCode} add={addShortcut} button="ADD SHORTCUT" isActive={isActive} setIsActive={setIsActive} />
+                        return <Exam key={data.id} procedure={data.name} views={data.views.name} cpt={data.cptCode.cptCode} add={addShortcut} button="ADD SHORTCUT" isActive={isActive} setIsActive={setIsActive} description={data.description.text} />
                     })}
                 </div>
             </div>
