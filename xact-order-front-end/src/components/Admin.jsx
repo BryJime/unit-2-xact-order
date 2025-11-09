@@ -1,27 +1,35 @@
 import ExamsData from "./ExamData/ExamsData";
 import AddExamForm from "./AddExamForm";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { DataContext } from "./DataContext.jsx";
 
 
 function Admin() {
 
-    const [ examList, setExamList] = useState(ExamsData);
+    const { isLoading, allExams } = useContext(DataContext);
 
-    let allExams = ExamsData.map(exam => {
+    const [examList, setExamList] = useState(ExamsData);
 
-        return (
-        <tr key={exam.id}>
-            <td>{exam.name}</td>
-            <td>{exam.views.name}</td>
-            <td>{exam.cptCode.cptCode}</td>
-            <td>{exam.description.text}</td>
-            <td>{exam.alias.name}</td>
-            <td>{exam.region}</td>
-            <td>{exam.common ? "Yes" : "No"}</td>
-        </tr>)
+    if (isLoading) {
+        return <div>Loading exams...</div>;
+    } else {
 
-    })
-    
+        let currentExams = allExams.map(exam => {
+
+            return (
+                <tr key={exam.id}>
+                    <td>{exam.name}</td>
+                    <td>{exam.views.name}</td>
+                    <td>{exam.cptCode.cptCode}</td>
+                    <td>{exam.description.text}</td>
+                    <td>{exam.alias.name}</td>
+                    <td>{exam.region}</td>
+                    <td>{exam.common ? "Yes" : "No"}</td>
+                </tr>)
+
+        })
+    }
+
     let refreshExamList = () => {
         setExamList([...ExamsData]);
     }
@@ -30,7 +38,7 @@ function Admin() {
 
     return (
         <div>
-            <AddExamForm reRender={refreshExamList}/>
+            <AddExamForm reRender={refreshExamList} />
 
             <hr className="line" />
 
@@ -50,7 +58,7 @@ function Admin() {
                         </tr>
                     </thead>
                     <tbody>
-                        {allExams}
+                        {currentExams}
                     </tbody>
                 </table>
             </div>
