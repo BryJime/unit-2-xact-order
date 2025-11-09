@@ -8,30 +8,33 @@ function Admin() {
 
     const { isLoading, allExams } = useContext(DataContext);
 
-    const [examList, setExamList] = useState(ExamsData);
+    const [examList, setExamList] = useState(allExams || []);
 
-    if (isLoading) {
+
+    if (isLoading || !allExams) {
         return <div>Loading exams...</div>;
-    } else {
-
-        let currentExams = allExams.map(exam => {
-
-            return (
-                <tr key={exam.id}>
-                    <td>{exam.name}</td>
-                    <td>{exam.views.name}</td>
-                    <td>{exam.cptCode.cptCode}</td>
-                    <td>{exam.description.text}</td>
-                    <td>{exam.alias.name}</td>
-                    <td>{exam.region}</td>
-                    <td>{exam.common ? "Yes" : "No"}</td>
-                </tr>)
-
-        })
     }
 
+    console.log("All Exams from Context:", allExams);
+
+    let currentExams = examList.map(exam =>
+    (
+        <tr key={exam.id}>
+            <td>{exam.name}</td>
+            <td>{exam.views.name}</td>
+            <td>{exam.cptCode.cptCode}</td>
+            <td>{exam.description.text}</td>
+            <td>{exam.alias.name}</td>
+            <td>{exam.region}</td>
+            <td>{exam.common ? "Yes" : "No"}</td>
+        </tr>
+    ));
+
+
+
+
     let refreshExamList = () => {
-        setExamList([...ExamsData]);
+        setExamList([...allExams]);
     }
 
 

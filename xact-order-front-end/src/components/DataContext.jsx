@@ -13,13 +13,24 @@ export const DataProvider = ({ children }) => {
     const fetchExams = async () => {
 
         try {
-            const response = await fetch('http://localhost:8080/exams/all');
+            const response = await fetch('http://localhost:8080/exams/all', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            console.log("Raw response:", response);
 
             if ( !response.ok ) {
+                
                 let error = await response.json();
+                console.log("Parsed data:", data);
                 throw new Error(error.message || 'Failed to fetch exams');
+
             } else {
                 const data = await response.json();
+                console.log("Parsed data:", data);
                 setAllExams(data);
                 setIsLoading(false);
             }
