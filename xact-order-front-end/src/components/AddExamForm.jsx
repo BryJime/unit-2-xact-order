@@ -7,7 +7,7 @@ function AddExamForm({ reRender }) {
 
     const { allExams } = useContext(DataContext);
 
-    console.log("DB EXAMS: " + allExams);
+    console.log("Exams from context: ", allExams);
 
 
     const [examData, setExamData] = useState({
@@ -35,8 +35,24 @@ function AddExamForm({ reRender }) {
         }));
     }
 
-    const saveExam = (e) => {
-        e.preventDefault();
+    const saveExam = async () => {
+
+        try {
+            const response = await fetch('http://localhost:8080/exams/add', {
+                method: 'POST',
+                body: examData
+            });
+
+            if (!response.ok) {
+                let error = await response.json();
+                throw new Error(error.message || 'Failed to POST exam');
+
+            } 
+
+        } catch (e) {
+            console.error('Error saving exam:', e);
+
+        }
 
 
         // Submit examData to the server or perform other actions
