@@ -35,21 +35,26 @@ function AddExamForm({ reRender }) {
         }));
     }
 
+
     const saveExam = async () => {
 
+        
         try {
             const response = await fetch('http://localhost:8080/exams/add', {
                 method: 'POST',
-                body: examData
+                body: JSON.stringify(examData),
+                headers: {
+                    "Content-type": "application/json"
+                }
             });
 
             if (!response.ok) {
                 let error = await response.json();
                 throw new Error(error.message || 'Failed to POST exam');
-
             } 
 
         } catch (e) {
+
             console.error('Error saving exam:', e);
 
         }
