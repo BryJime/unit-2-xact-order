@@ -8,14 +8,10 @@ function Admin() {
 
     const { isLoading, allExams } = useContext(DataContext);
 
-    const [examList, setExamList] = useState(allExams || []);
 
-
-    if (isLoading || !examList) {
-        return <div>Loading exams...</div>;
+    if (isLoading || !allExams) {
+        return <div className="loading-exams">Loading exams...</div>;
     }
-
-    
 
     let currentExams = allExams.map(exam =>
     (
@@ -32,13 +28,10 @@ function Admin() {
         
     ));
 
-    let refreshExamList = () => {
-        setExamList([...allExams]);
-    }
 
     return (
         <div>
-            <AddExamForm reRender={refreshExamList} />
+            <AddExamForm />
 
             <hr className="line" />
             { isLoading ? <div>Loading exams...</div> :
