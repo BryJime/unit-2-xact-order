@@ -20,17 +20,16 @@ export const DataProvider = ({ children }) => {
                 }
             });
 
-            console.log("Raw response:", response);
 
             if ( !response.ok ) {
                 
                 let error = await response.json();
-                console.log("Parsed data:", data);
+                
                 throw new Error(error.message || 'Failed to fetch exams');
 
             } else {
                 const data = await response.json();
-                console.log("Parsed data:", data);
+                
                 setAllExams(data);
                 setIsLoading(false);
             }
@@ -38,9 +37,7 @@ export const DataProvider = ({ children }) => {
 
         } catch (error) {
             console.error('Error fetching exams:', error);
-        } finally {
-            setIsLoading(false);
-        }
+        } 
     }
 
     useEffect(() => {

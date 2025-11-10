@@ -11,14 +11,15 @@ function Admin() {
     const [examList, setExamList] = useState(allExams || []);
 
 
-    if (isLoading || !allExams) {
+    if (isLoading || !examList) {
         return <div>Loading exams...</div>;
     }
 
-    console.log("All Exams from Context:", allExams);
+    
 
-    let currentExams = examList.map(exam =>
+    let currentExams = allExams.map(exam =>
     (
+
         <tr key={exam.id}>
             <td>{exam.name}</td>
             <td>{exam.views.name}</td>
@@ -28,23 +29,19 @@ function Admin() {
             <td>{exam.region}</td>
             <td>{exam.common ? "Yes" : "No"}</td>
         </tr>
+        
     ));
-
-
-
 
     let refreshExamList = () => {
         setExamList([...allExams]);
     }
-
-
 
     return (
         <div>
             <AddExamForm reRender={refreshExamList} />
 
             <hr className="line" />
-
+            { isLoading ? <div>Loading exams...</div> :
             <div className="exam-list">
                 <h2 className="exam-list-title">All Exams: </h2>
                 <br />
@@ -65,6 +62,7 @@ function Admin() {
                     </tbody>
                 </table>
             </div>
+            }
         </div>
     );
 }
