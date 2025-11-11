@@ -12,7 +12,28 @@ function Admin() {
 
     const [editingId, setEditingId] = useState(null);
 
+    const [examData, setExamData] = useState({
+        "name": "",
+        "region": "",
+        "shortcut": false,
+        "common": true,
+        "cptCode": "",
+        "anatomy": "",
+        "views": "",
+        "description": "",
+        "alias": ""
+    })
 
+    const handleChange = (e) => {
+        e.preventDefault();
+
+        const { name, value, type, checked } = e.target;
+
+        setExamData((data) => ({
+            ...data,
+            [name]: type === "checkbox" ? checked : value
+        }));
+    }
 
     if (isLoading || !allExams) {
         return <div className="loading-exams">Loading exams...</div>;
@@ -44,25 +65,28 @@ function Admin() {
             return <tr key={exam.id}>
                 <td>{exam.id}</td>
                 <td>
-                    <input className="exam-table-name-input" type="text" ></input>
+                    <input className="exam-table-name-input" type="text" name="name" onChange={handleChange}></input>
                 </td>
                 <td>
-                    <input className="exam-table-views-input" type="text" ></input>
+                    <input className="exam-table-views-input" type="text" name="views" onChange={handleChange}></input>
                 </td>
                 <td>
-                    <input className="exam-table-cpt-input" type="text"></input>
+                    <input className="exam-table-cpt-input" type="text" name="cptCode" onChange={handleChange}></input>
                 </td>
                 <td>
-                    <input className="exam-table-description-input" type="text" ></input>
+                    <input className="exam-table-description-input" type="text" name="description" onChange={handleChange}></input>
                 </td>
                 <td>
-                    <input className="exam-table-alias-input" type="text" ></input>
+                    <input className="exam-table-alias-input" type="text" name="alias" onChange={handleChange}></input>
                 </td>
                 <td>
-                    <input className="exam-table-region-input" type="text" ></input>
+                    <input className="exam-table-region-input" type="text" name="region" onChange={handleChange}></input>
                 </td>
                 <td>
-                    <input className="exam-table-common-input" type="checkbox" ></input>
+                    <input className="exam-table-anatomy-input" type="text" name="anatomy" onChange={handleChange}></input>
+                </td>
+                <td>
+                    <input className="exam-table-common-input" type="checkbox" name="common" onChange={handleChange}></input>
                 </td>
                 <td><button className="delete-exam-button" onClick={() => updateExam(exam.id)}>SAVE</button></td>
                 <td><button className="delete-exam-button" onClick={() => setIsEditing(false)}>CANCEL</button></td>
@@ -106,8 +130,8 @@ function Admin() {
             try {
                 const response = await fetch(`http://localhost:8080/exams/update/${id}`, {
                     method: 'PUT',
-                    headers: {"Content-Type": "application/json"},
-                    body: JSON.stringify()
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(examData)
 
                 })
 
@@ -122,6 +146,8 @@ function Admin() {
             window.location.reload();
         }
     }
+
+
 
 
 
