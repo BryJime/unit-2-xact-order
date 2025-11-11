@@ -7,11 +7,13 @@ import Header from './components/Header'
 import ExamsDisplay from './components/ExamsDisplay'
 import AdminLogin from './components/AdminLogin'
 import Admin from './components/Admin'
+import { DataProvider } from './components/DataContext.jsx'
 
 
 function App() {
   return (
     <>
+    <DataProvider>
       <Router>
         <Header />
         <Routes>
@@ -23,6 +25,7 @@ function App() {
           <Route path="/Admin" element={<Admin />} />
         </Routes>
       </Router>
+    </DataProvider>
     </>
   )
 }

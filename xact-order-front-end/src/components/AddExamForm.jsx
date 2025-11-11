@@ -1,70 +1,103 @@
-import { useState } from "react";
-import ExamsData from "./ExamData/ExamsData";  
+import { useState, useContext } from "react";
+import ExamsData from "./ExamData/ExamsData";
+import { DataContext } from "./DataContext";
 
 
+function AddExamForm() {
 
-function AddExamForm( { reRender } ) {
+    const { allExams } = useContext(DataContext);
 
-    let initialExamData = {};
 
-    const [ examData, setExamData ] = useState(initialExamData);
+    const [examData, setExamData] = useState({
+        "name": "",
+        "region": "",
+        "shortcut": false,
+        "common": true,
+        "cptCode": "",
+        "anatomy": "",
+        "views": "",
+        "description": "",
+        "alias": ""
+    });
+
 
 
     const handleChange = (e) => {
-        e.preventDefault(); 
-        let updatedExamData = { ...examData,
-        [e.target.name]: e.target.value
-        };
-        setExamData(updatedExamData);
-    }
-
-
-
-    const saveExam = (e) => {
         e.preventDefault();
-        ExamsData.push(examData);
-        
-        // Submit examData to the server or perform other actions
-        reRender();
+
+        const { name, value, type, checked } = e.target;
+
+        setExamData((data) => ({
+            ...data,
+            [name]: type === "checkbox" ? checked : value
+        }));
     }
 
-    console.log(ExamsData);
 
-  return <form className="add-exam-form">
+    const saveExam = async () => {
 
-                <label htmlFor="examName">Exam Name:
-                    <input className="exam-input" type="text" id="examName" name="name" onChange={handleChange} required />
-                </label>
+        try {
+            const response = await fetch('http://localhost:8080/exams/add', {
+                method: 'POST',
+                body: JSON.stringify(examData),
+                headers: {
+                    "Content-type": "application/json"
+                }
+            });
 
-                <label htmlFor="examViews">Views:
-                    <input className="exam-input" type="text" id="examViews" name="views" onChange={handleChange} required />
-                </label>
+            if (!response.ok) {
+                let error = await response.json();
+                throw new Error(error.message || 'Failed to POST exam');
+            }
 
-                <label htmlFor="examCPT">CPT Code:
-                    <input className="exam-input" type="text" id="examCPT" name="cptCode" onChange={handleChange} required />
-                </label>
-
-                <label htmlFor="examDescription">Description:
-                    <textarea className="exam-input" id="examDescription" name="description" onChange={handleChange} required />
-                </label>
-
-                <label htmlFor="examAlias">Alias:
-                    <input className="exam-input" type="text" id="examAlias" name="alias" onChange={handleChange} required />
-                </label>
-
-                <label htmlFor="examRegion">Region:
-                    <input className="exam-input" type="text" id="examRegion" name="region" onChange={handleChange} required />
-                </label>
-
-                <label className="common-label">Common Exam:
-                    <input type="checkbox" name="common" onChange={handleChange} />
-                </label>
+        } catch (e) {
+            console.error('Error saving exam:', e);
+        }
+    }
 
 
-                <button className="admin-button" type="reset">Clear</button>
 
-                <button className="admin-button" type="submit" onClick={saveExam} >Save Exam</button>
-            </form>
+
+
+    return <form className="add-exam-form">
+
+        <label htmlFor="examName">Exam Name:
+            <input className="exam-input" type="text" id="examName" name="name" onChange={handleChange} required />
+        </label>
+
+        <label htmlFor="examViews">Views:
+            <input className="exam-input" type="text" id="examViews" name="views" onChange={handleChange} required />
+        </label>
+
+        <label htmlFor="examCPT">CPT Code:
+            <input className="exam-input" type="text" id="examCPT" name="cptCode" onChange={handleChange} required />
+        </label>
+
+        <label htmlFor="examDescription">Description:
+            <textarea className="exam-input" id="examDescription" name="description" onChange={handleChange} required />
+        </label>
+
+        <label htmlFor="examAlias">Alias:
+            <input className="exam-input" type="text" id="examAlias" name="alias" onChange={handleChange} required />
+        </label>
+
+        <label htmlFor="examRegion">Region:
+            <input className="exam-input" type="text" id="examRegion" name="region" onChange={handleChange} required />
+        </label>
+
+        <label htmlFor="examAnatomy">Anatomy:
+            <input className="exam-input" type="text" id="examAnatomy" name="anatomy" onChange={handleChange} required />
+        </label>
+
+        <label className="common-label">Common Exam:
+            <input type="checkbox" name="common" onChange={handleChange} />
+        </label>
+
+
+        <button className="admin-button" type="reset">Clear</button>
+
+        <button className="admin-button" type="submit" onClick={saveExam} >Add Exam</button>
+    </form>
 }
 
 export default AddExamForm;
