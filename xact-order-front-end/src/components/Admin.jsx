@@ -73,25 +73,25 @@ function Admin() {
             return <tr key={exam.id}>
                 <td>{exam.id}</td>
                 <td>
-                    <input className="exam-table-name-input" type="text" name="name" onChange={handleChange}></input>
+                    <input className="exam-table-name-input" type="text" name="name" value={exam.name} onChange={handleChange}></input>
                 </td>
                 <td>
-                    <input className="exam-table-views-input" type="text" name="views" onChange={handleChange}></input>
+                    <input className="exam-table-views-input" type="text" name="views" value={exam.views.name} onChange={handleChange}></input>
                 </td>
                 <td>
-                    <input className="exam-table-cpt-input" type="text" name="cptCode" onChange={handleChange}></input>
+                    <input className="exam-table-cpt-input" type="text" name="cptCode" value={exam.cptCode.cptCode} onChange={handleChange}></input>
                 </td>
                 <td>
-                    <input className="exam-table-description-input" type="text" name="description" onChange={handleChange}></input>
+                    <input className="exam-table-description-input" type="text" name="description" value={exam.description.text} onChange={handleChange}></input>
                 </td>
                 <td>
-                    <input className="exam-table-alias-input" type="text" name="alias" onChange={handleChange}></input>
+                    <input className="exam-table-alias-input" type="text" name="alias" value={exam.alias.name} onChange={handleChange}></input>
                 </td>
                 <td>
-                    <input className="exam-table-region-input" type="text" name="region" onChange={handleChange}></input>
+                    <input className="exam-table-region-input" type="text" name="region" value={exam.region} onChange={handleChange}></input>
                 </td>
                 <td>
-                    <input className="exam-table-anatomy-input" type="text" name="anatomy" onChange={handleChange}></input>
+                    <input className="exam-table-anatomy-input" type="text" name="anatomy" value={exam.anatomy.name} onChange={handleChange}></input>
                 </td>
                 <td>
                     <input className="exam-table-common-input" type="checkbox" name="common" onChange={handleChange}></input>
