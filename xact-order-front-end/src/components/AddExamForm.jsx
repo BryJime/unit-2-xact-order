@@ -96,7 +96,7 @@ function AddExamForm() {
 
         <button className="admin-button" type="reset">Clear</button>
 
-        <button className="admin-button" type="submit" onClick={saveExam} >Save Exam</button>
+        <button className="admin-button" type="submit" onClick={saveExam} >Add Exam</button>
     </form>
 }
 
