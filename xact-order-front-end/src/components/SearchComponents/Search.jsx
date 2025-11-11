@@ -1,14 +1,20 @@
-import { useState } from "react";
-import ExamsData from "../ExamData/ExamsData.js";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Searchbar from "./Searchbar";
-import SearchRegion from "./SearchRegion";
+
 import SkeletonSelection from "./SkeletonSelection";
+
+import { DataContext } from "../DataContext.jsx";
 
 function Search() {
 
     const [inputValue, setinputValue] = useState('');
     const [validInput, setvalidInput] = useState(true);
+
+    const { allExams } = useContext(DataContext);
+
+    console.log("Input Value (Search.jsx): ", inputValue);
+
 
     const navigate = useNavigate();
     //Assigned data variable to be passed with state via useNavigate
@@ -18,11 +24,13 @@ function Search() {
     const getSearchData = (e) => {
         e.preventDefault();
 
-        const exam = ExamsData.filter(exam => {
-            if (exam.alias.includes(inputValue.toLowerCase().trim(), 0)) {
-                return exam
-            }
-        })
+        const search = inputValue.toLowerCase().trim();
+
+        const exam = allExams.filter(exam => {
+            const aliasParts = exam.alias.name.toLowerCase().split(",");
+            return aliasParts.some(part => part.trim().includes(search));
+        });
+
 
         storeData = exam;
 
@@ -31,38 +39,22 @@ function Search() {
         } else {
             navigate('/ExamsDisplay.jsx', { state: { storeData, inputValue } })
         }
-    }
-
-    // Finds data based on dropdown selection
-    const getRegionData = (e) => {
-        e.preventDefault();
-
-        const exam = ExamsData.filter(exam => {
-            if (exam.region.includes(inputValue, 0)) {
-                return exam
-            }
-        })
-
-        storeData = exam;
-
-        navigate('/ExamsDisplay.jsx', { state: { storeData, inputValue } })
-
-    }
+    };
 
     // Finds data based on Skeleton selection
     const getSkeletonData = (value) => {
-        
+
 
         setinputValue(value);
 
-        const exam = ExamsData.filter(exam => {
+        const exam = allExams.filter(exam => {
             if (exam.region.includes(value, 0)) {
                 return exam
             }
         })
 
         storeData = exam;
-        
+
 
         navigate('/ExamsDisplay.jsx', { state: { storeData, inputValue } })
     }
@@ -71,7 +63,7 @@ function Search() {
 
         <form>
             <h1 className="search-body-message">Search by Body Part</h1>
-            <br/>
+            <br />
             <Searchbar input={inputValue} setInput={(event) => setinputValue(event.target.value)} data={getSearchData} />
             <h1 className="search-region-message">or Region</h1>
             <div className="validation-message">

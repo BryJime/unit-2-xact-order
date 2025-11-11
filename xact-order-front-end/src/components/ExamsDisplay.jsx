@@ -1,24 +1,21 @@
 import { useLocation } from "react-router-dom";
-import { useState, useContext } from "react";
+import { useState } from "react";
 import Exam from "./Exam";
-import { DataContext } from "./DataContext";
 
 
 function ExamsDisplay() {
 
-    const { allExams } = useContext(DataContext);
-
     const { state } = useLocation();
-    const { inputValue } = state;
+    const { storeData, inputValue } = state;
     const [isActive, setIsActive] = useState(false);
 
-    console.log("Data from context: ", allExams)
+    console.log("Data from context (ExamsDisplay.jsx): ", storeData)
 
-    console.log("Input Value: ", inputValue);
+    console.log("Input Value (ExamsDisplay.jsx): ", inputValue);
 
     let examStatus = '';
 
-    if (allExams === null ){
+    if (storeData === null ){
         return examStatus = <div className="exam-status">ERROR LOADING EXAMS.</div>;
     }
 
@@ -31,7 +28,7 @@ function ExamsDisplay() {
                 <br></br>
                 <div>
                     {examStatus}
-                    {allExams.map((data) => {
+                    {storeData.map((data) => {
 
                         const addShortcut = () => {
                             if (data.shortcut === false) {
