@@ -24,6 +24,12 @@ function Admin() {
         "alias": ""
     })
 
+    let examStatus = '';
+
+    if (allExams === null) {
+        return examStatus = <div className="exam-status">ERROR LOADING EXAMS.</div>;
+    }
+
     const handleChange = (e) => {
         e.preventDefault();
 
@@ -35,9 +41,11 @@ function Admin() {
         }));
     }
 
-    if (isLoading || !allExams) {
+    if (isLoading) {
         return <div className="loading-exams">Loading exams...</div>;
     }
+
+
 
     let currentExams = [];
 
@@ -148,11 +156,11 @@ function Admin() {
     }
 
 
-
-
-
     return (
         <div>
+
+            {examStatus}
+
             <AddExamForm />
 
             <hr className="line" />

@@ -1,15 +1,26 @@
 import { useLocation } from "react-router-dom";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import Exam from "./Exam";
-import ExamsData from "./ExamData/ExamsData.js";
+import { DataContext } from "./DataContext";
+
 
 function ExamsDisplay() {
 
+    const { allExams } = useContext(DataContext);
+
     const { state } = useLocation();
-    const { storeData, inputValue } = state;
-    const [ isActive, setIsActive ] = useState(false);
+    const { inputValue } = state;
+    const [isActive, setIsActive] = useState(false);
 
+    console.log("Data from context: ", allExams)
 
+    console.log("Input Value: ", inputValue);
+
+    let examStatus = '';
+
+    if (allExams === null ){
+        return examStatus = <div className="exam-status">ERROR LOADING EXAMS.</div>;
+    }
 
     // Finds data based on search value and displays all exams based on value
     return (
@@ -19,13 +30,15 @@ function ExamsDisplay() {
                 <hr className="exams-display-line"></hr>
                 <br></br>
                 <div>
-                    {storeData.map((data) => {
+                    {examStatus}
+                    {allExams.map((data) => {
+
                         const addShortcut = () => {
                             if (data.shortcut === false) {
                                 for (let exam of ExamsData) {
                                     if (exam.name === data.name) {
                                         exam.shortcut = true
-                                         setIsActive(true);
+                                        setIsActive(true);
                                     }
                                 }
                                 return data.shortcut;
