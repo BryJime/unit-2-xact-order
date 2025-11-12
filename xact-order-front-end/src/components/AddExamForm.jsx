@@ -1,11 +1,7 @@
-import { useState, useContext } from "react";
-import ExamsData from "./ExamData/ExamsData";
-import { DataContext } from "./DataContext";
+import { useState,  } from "react";
 
 
 function AddExamForm() {
-
-    const { allExams } = useContext(DataContext);
 
 
     const [examData, setExamData] = useState({

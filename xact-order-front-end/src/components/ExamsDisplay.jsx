@@ -15,7 +15,7 @@ function ExamsDisplay() {
 
     let examStatus = '';
 
-    if (storeData === null ){
+    if (storeData === null) {
         return examStatus = <div className="exam-status">ERROR LOADING EXAMS.</div>;
     }
 
@@ -30,15 +30,37 @@ function ExamsDisplay() {
                     {examStatus}
                     {storeData.map((data) => {
 
-                        const addShortcut = () => {
-                            if (data.shortcut === false) {
-                                for (let exam of ExamsData) {
-                                    if (exam.name === data.name) {
-                                        exam.shortcut = true
-                                        setIsActive(true);
-                                    }
+                        const addShortcut = async () => {
+
+                            let selectedExam = storeData.find(d => data.id === d.id);
+                            const updatedExam = {
+                                name: selectedExam.name,
+                                region: selectedExam.region,
+                                shortcut: true,
+                                common: selectedExam.common,
+                                cptCode: selectedExam.cptCode.cptCode,
+                                anatomy: selectedExam.anatomy.name,
+                                views: selectedExam.views.name,
+                                description: selectedExam.description.text,
+                                alias: selectedExam.alias.name
+                            };
+
+
+                            console.log(storeData);
+
+                            try {
+                                const response = await fetch(`http://localhost:8080/exams/update/${data.id}`, {
+                                    method: 'PUT',
+                                    headers: { "Content-Type": "application/json" },
+                                    body: JSON.stringify(updatedExam)
+
+                                })
+
+                                if (!response.ok) {
+                                    throw new Error("Failed to update exam!");
                                 }
-                                return data.shortcut;
+                            } catch (e) {
+                                console.log(e)
                             }
                         }
 

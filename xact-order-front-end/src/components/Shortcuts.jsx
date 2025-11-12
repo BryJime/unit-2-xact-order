@@ -56,6 +56,7 @@ function Shortcuts() {
         }
 
         setExamValues(allExams.filter(data => data.shortcut));
+        window.location.reload();
     }
 
 
