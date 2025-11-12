@@ -62,6 +62,7 @@ function Admin() {
             <td>{exam.region}</td>
             <td>{exam.anatomy.name}</td>
             <td>{exam.common ? "Yes" : "No"}</td>
+            <td>{exam.shortcut ? "Yes" : "No"}</td>
             <td><button className="delete-exam-button" onClick={() => deleteExam(exam.id)}>DELETE</button></td>
             <td><button className="edit-exam-button" onClick={() => startEditing(exam.id)} >EDIT</button></td>
         </tr>
@@ -95,6 +96,9 @@ function Admin() {
                 </td>
                 <td>
                     <input className="exam-table-common-input" type="checkbox" name="common" onChange={handleChange}></input>
+                </td>
+                <td>
+                    <input className="exam-table-shortcut-input" type="checkbox" name="shortcut" onChange={handleChange}></input>
                 </td>
                 <td><button className="delete-exam-button" onClick={() => updateExam(exam.id)}>SAVE</button></td>
                 <td><button className="delete-exam-button" onClick={() => setIsEditing(false)}>CANCEL</button></td>
@@ -180,6 +184,7 @@ function Admin() {
                                 <th>Region</th>
                                 <th>Anatomy</th>
                                 <th>Common</th>
+                                <th>Shortcut</th>
                             </tr>
                         </thead>
                         <tbody>
