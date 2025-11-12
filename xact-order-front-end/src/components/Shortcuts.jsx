@@ -1,28 +1,66 @@
-import ExamsData from "./ExamData/ExamsData.js";
 import Exam from "./Exam";
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
+import { DataContext } from "./DataContext.jsx";
+
 
 // Finds exams that have been assigned to Shortcut page
 function Shortcuts() {
 
-    const [examValues, setExamValues] = useState(ExamsData.filter(data => data.shortcut));
+    const { allExams } = useContext(DataContext);
+
+    const [examValues, setExamValues] = useState([]);
+
+    console.log(examValues)
 
     let shortcutButton;
-    
+
+    useEffect(() => {
+        if (allExams) {
+            const shortcuts = allExams.filter(data => data.shortcut === true);
+            setExamValues(shortcuts);
+        }
+    }, [allExams])
 
     // Sets exam shortcut to false and updates exam data
-    function removeShortcut(id) {
-        
-        for(let exam of ExamsData){ 
-            if (id === exam.id){
-                exam.shortcut = false;
-                break;
+    const removeShortcut = async (id) => {
+
+        let selectedExam = allExams.find(data => id === data.id);
+        const updatedExam = {
+            name: selectedExam.name,
+            region: selectedExam.region,
+            shortcut: false,
+            common: selectedExam.common,
+            cptCode: selectedExam.cptCode.cptCode,
+            anatomy: selectedExam.anatomy.name,
+            views: selectedExam.views.name,
+            description: selectedExam.description.text,
+            alias: selectedExam.alias.name
+        };
+
+
+        console.log(updatedExam);
+
+        try {
+            const response = await fetch(`http://localhost:8080/exams/update/${id}`, {
+                method: 'PUT',
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(updatedExam)
+
+            })
+
+            if (!response.ok) {
+                throw new Error("Failed to update exam!");
             }
+        } catch (e) {
+            console.log(e)
         }
 
-        setExamValues(ExamsData.filter(data => data.shortcut));
-        
+        setExamValues(allExams.filter(data => data.shortcut));
     }
+
+
+
+
 
     return (
         <>
@@ -35,7 +73,7 @@ function Shortcuts() {
                     if (data.shortcut === true) {
                         shortcutButton = "REMOVE SHORTCUT";
                         return <Exam key={data.id} procedure={data.name} views={data.views.name} cpt={data.cptCode.cptCode} button={shortcutButton} add={() => removeShortcut(data.id)} />
-                    } 
+                    }
                 })}
             </div>
         </>
