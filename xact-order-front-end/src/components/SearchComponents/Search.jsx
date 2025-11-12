@@ -48,7 +48,7 @@ function Search() {
         setinputValue(value);
 
         const exam = allExams.filter(exam => {
-            if (exam.region.includes(value, 0)) {
+            if (exam.anatomy.name.includes(value, 0)) {
                 return exam
             }
         })

@@ -15,8 +15,8 @@ function Admin() {
     const [examData, setExamData] = useState({
         "name": "",
         "region": "",
-        "shortcut": false,
-        "common": true,
+        "shortcut": null,
+        "common": null,
         "cptCode": "",
         "anatomy": "",
         "views": "",
@@ -73,25 +73,25 @@ function Admin() {
             return <tr key={exam.id}>
                 <td>{exam.id}</td>
                 <td>
-                    <input className="exam-table-name-input" type="text" name="name" value={exam.name} onChange={handleChange}></input>
+                    <input className="exam-table-name-input" type="text" name="name" placeholder={exam.name} onChange={handleChange} required></input>
                 </td>
                 <td>
-                    <input className="exam-table-views-input" type="text" name="views" value={exam.views.name} onChange={handleChange}></input>
+                    <input className="exam-table-views-input" type="text" name="views" placeholder={exam.views.name} onChange={handleChange} required></input>
                 </td>
                 <td>
-                    <input className="exam-table-cpt-input" type="text" name="cptCode" value={exam.cptCode.cptCode} onChange={handleChange}></input>
+                    <input className="exam-table-cpt-input" type="text" name="cptCode" placeholder={exam.cptCode.cptCode} onChange={handleChange} required></input>
                 </td>
                 <td>
-                    <input className="exam-table-description-input" type="text" name="description" value={exam.description.text} onChange={handleChange}></input>
+                    <input className="exam-table-description-input" type="text" name="description" placeholder={exam.description.text} onChange={handleChange} required></input>
                 </td>
                 <td>
-                    <input className="exam-table-alias-input" type="text" name="alias" value={exam.alias.name} onChange={handleChange}></input>
+                    <input className="exam-table-alias-input" type="text" name="alias" placeholder={exam.alias.name} onChange={handleChange} required></input>
                 </td>
                 <td>
-                    <input className="exam-table-region-input" type="text" name="region" value={exam.region} onChange={handleChange}></input>
+                    <input className="exam-table-region-input" type="text" name="region" placeholder={exam.region} onChange={handleChange} required></input>
                 </td>
                 <td>
-                    <input className="exam-table-anatomy-input" type="text" name="anatomy" value={exam.anatomy.name} onChange={handleChange}></input>
+                    <input className="exam-table-anatomy-input" type="text" name="anatomy" placeholder={exam.anatomy.name} onChange={handleChange} required></input>
                 </td>
                 <td>
                     <input className="exam-table-common-input" type="checkbox" name="common" onChange={handleChange}></input>
