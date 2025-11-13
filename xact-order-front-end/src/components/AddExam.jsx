@@ -27,7 +27,7 @@ function AddExam() {
     let examStatus = '';
 
     if (allExams === null) {
-        return examStatus = <div className="exam-status">ERROR LOADING EXAMS.</div>;
+        return examStatus = <div className="loading-exams-error">ERROR FETCHING EXAMS! *SERVER UNAVAILABLE*</div>;
     }
 
     const handleChange = (e) => {

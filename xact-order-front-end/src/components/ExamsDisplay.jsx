@@ -13,10 +13,10 @@ function ExamsDisplay() {
 
     let examStatus = '';
 
-    isLoading && <div className="loading-exams">LOADING EXAMS...</div>
+    isLoading && (examStatus = <div className="loading-exams">LOADING EXAMS...</div>);
 
     if (allExams === null) {
-        return examStatus = <div className="loading-exams-error">ERROR FETCHING EXAMS!</div>
+        return examStatus = <div className="loading-exams-error">ERROR FETCHING EXAMS! *SERVER UNAVAILABLE*</div>
     }
 
     const search = inputValue.toLowerCase().trim();
