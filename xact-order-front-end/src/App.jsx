@@ -5,8 +5,7 @@ import Shortcuts from './components/Shortcuts'
 import About from './components/About'
 import Header from './components/Header'
 import ExamsDisplay from './components/ExamsDisplay'
-import AdminLogin from './components/AdminLogin'
-import Admin from './components/Admin'
+import AddExam from './components/AddExam.jsx'
 import { DataProvider } from './components/DataContext.jsx'
 
 
@@ -21,8 +20,7 @@ function App() {
           <Route path="/Shortcuts.jsx" element={<Shortcuts />} />
           <Route path="/About.jsx" element={<About />} />
           <Route path="/ExamsDisplay.jsx" element={<ExamsDisplay />} />
-          <Route path="/AdminLogin" element={<AdminLogin />} />
-          <Route path="/Admin" element={<Admin />} />
+          <Route path="/AddExam.jsx" element={<AddExam />} />
         </Routes>
       </Router>
     </DataProvider>

@@ -1,10 +1,10 @@
-import ExamsData from "./ExamData/ExamsData";
-import AddExamForm from "./AddExamForm";
+import ExamsData from "./ExamData/ExamsData.js";
+import AddExamForm from "./AddExamForm.jsx";
 import { useState, useContext } from "react";
 import { DataContext } from "./DataContext.jsx";
 
 
-function Admin() {
+function AddExam() {
 
     const { isLoading, allExams } = useContext(DataContext);
 
@@ -197,4 +197,4 @@ function Admin() {
     );
 }
 
-export default Admin;
+export default AddExam;

@@ -11,13 +11,7 @@ function ExamsDisplay() {
     const { state } = useLocation();
     const { inputValue, searchType } = state;
 
-    console.log("searchType: ", searchType);
-
-
     let examStatus = '';
-
-
-
 
     isLoading && <div className="loading-exams">LOADING EXAMS...</div>
 
@@ -26,8 +20,7 @@ function ExamsDisplay() {
     }
 
 
-    console.log("Input Value: ", inputValue);
-    console.log("Exams Value 1: ", allExams);
+
 
 
     const search = inputValue.toLowerCase().trim();
@@ -43,20 +36,17 @@ function ExamsDisplay() {
     } else if (searchType === "skeleton") {
 
         exams = allExams.filter(exam => {
-            return exam.anatomy.name.includes(search)
+            return exam.anatomy.name.includes(inputValue)
         })
 
     }
 
-    if (exams = []) {
-        return examStatus = "NO EXAMS TO BE FOUND!"
+    console.log("Exams Value 2: ", exams);
+
+
+    if (typeof exams === "object" && Object.keys(exams).length === 0) {
+        return examStatus = "WOW, SUCH EMPTY!"
     }
-
-
-
-
-
-
 
     // Finds data based on search value and displays all exams based on value
     return (
