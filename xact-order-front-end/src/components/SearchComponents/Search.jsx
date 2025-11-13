@@ -20,7 +20,7 @@ function Search() {
     const getSearchData = (e) => {
         e.preventDefault(); 
 
-        const updateSearchType = "skeleton"
+        const updateSearchType = "searchbar"
         
         setSearchType(updateSearchType);
         const search = inputValue.toLowerCase().trim();

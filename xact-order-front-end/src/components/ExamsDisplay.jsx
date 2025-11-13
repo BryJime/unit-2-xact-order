@@ -22,15 +22,16 @@ function ExamsDisplay() {
 
 
 
-
     const search = inputValue.toLowerCase().trim();
+    console.log(search);
 
     let exams = [];
 
     if (searchType === "searchbar") {
 
         exams = allExams.filter(exam => {
-            return exam.alias.name.toLowerCase().split(",").some(part => part.trim().includes(search));
+            const aliasParts = exam.alias.name.toLowerCase().split(",");
+            return aliasParts.some(part => part.trim().includes(search));
         });
 
     } else if (searchType === "skeleton") {
@@ -59,18 +60,17 @@ function ExamsDisplay() {
                     {examStatus}
                     {exams.map((data) => {
 
-                        const addShortcut = async () => {
-                            let selectedExam = exam.find(d => data.id === d.id);
+                        const addShortcut = async () => {   
                             const updatedExam = {
-                                name: selectedExam.name,
-                                region: selectedExam.region,
+                                name: data.name,
+                                region: data.region,
                                 shortcut: true,
-                                common: selectedExam.common,
-                                cptCode: selectedExam.cptCode.cptCode,
-                                anatomy: selectedExam.anatomy.name,
-                                views: selectedExam.views.name,
-                                description: selectedExam.description.text,
-                                alias: selectedExam.alias.name
+                                common: data.common,
+                                cptCode: data.cptCode.cptCode,
+                                anatomy: data.anatomy.name,
+                                views: data.views.name,
+                                description: data.description.text,
+                                alias: data.alias.name
                             };
 
                             try {
@@ -87,9 +87,10 @@ function ExamsDisplay() {
                             } catch (e) {
                                 console.log(e)
                             }
+                            window.location.reload();
                         }
 
-                        return <Exam key={data.id} procedure={data.name} views={data.views.name} cpt={data.cptCode.cptCode} add={addShortcut} button={data.shortcut ? "ADDED!" : "ADD SHORTCUT"} description={data.description.text} />
+                        return <Exam key={data.id} procedure={data.name} views={data.views.name} cpt={data.cptCode.cptCode} add={addShortcut} button={data.shortcut ? "ADDED!" : "ADD SHORTCUT"} isActive={data.shortcut} description={data.description.text} />
                     })}
                 </div>
             </div>
