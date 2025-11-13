@@ -60,7 +60,9 @@ function ExamsDisplay() {
     return (
         <>
             <div className="exam-display-page">
-                <h1 className="exam-title-display">{`${inputValue.toUpperCase()} EXAMS: `}</h1>
+                <h1 className="exam-title-display">{inputValue.trim() === ""
+                    ? "ALL EXAMS:"
+                    : `${inputValue.toUpperCase()} EXAMS:`}</h1>
                 <hr className="exams-display-line"></hr>
                 <br></br>
                 <div>
