@@ -3,6 +3,7 @@ import { useState, } from "react";
 
 function AddExamForm() {
 
+    // State for storing exam data during input
     const [examData, setExamData] = useState({
         "name": "",
         "region": "",

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import SkeletonSvg from "./SkeletonSvg.jsx";
 
-
+// Component for selecting skeleton regions and sub-regions
 function SkeletonSelection(props) {
 
     const [ selected, setSelected ] = useState(null);

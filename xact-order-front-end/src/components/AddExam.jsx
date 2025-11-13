@@ -2,7 +2,7 @@ import AddExamForm from "./AddExamForm.jsx";
 import { useState, useContext } from "react";
 import { DataContext } from "./DataContext.jsx";
 
-
+// Component for adding, editing, and deleting exams
 function AddExam() {
 
     const { isLoading, allExams } = useContext(DataContext);
@@ -11,6 +11,7 @@ function AddExam() {
 
     const [editingId, setEditingId] = useState(null);
 
+    // State for storing exam data during editing
     const [examData, setExamData] = useState({
         "name": "",
         "region": "",
@@ -28,7 +29,8 @@ function AddExam() {
     if (allExams === null) {
         return examStatus = <div className="loading-exams-error">ERROR FETCHING EXAMS! *SERVER UNAVAILABLE*</div>;
     }
-
+    
+    // Handles changes to exam data inputs during editing
     const handleChange = (e) => {
         e.preventDefault();
 
@@ -40,14 +42,14 @@ function AddExam() {
         }));
     }
 
-
+    // Displays loading message while exams are being fetched
     if (isLoading) {
         return <div className="loading-exams">Loading exams...</div>;
     }
 
-
     let currentExams = [];
 
+    // Renders exam list, either in view or edit mode
     !isEditing ? currentExams = allExams.map(exam =>
     (
 

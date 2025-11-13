@@ -31,6 +31,7 @@ function ExamsDisplay() {
 
     let exams = [];
 
+    // Finds data based on search type
     if (searchType === "searchbar") {
 
         exams = allExams.filter(exam => {
@@ -56,7 +57,7 @@ function ExamsDisplay() {
         </div>
     }
 
-    // Finds data based on search value and displays all exams based on value
+    // Renders the exam display page with filtered exams
     return (
         <>
             <div className="exam-display-page">
