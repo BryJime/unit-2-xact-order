@@ -9,7 +9,7 @@ function Search() {
     const [inputValue, setinputValue] = useState('');
     const [validInput, setvalidInput] = useState(true);
 
-    const [ searchType, setSearchType ] = useState('')
+    const [searchType, setSearchType] = useState('')
 
     const { allExams } = useContext(DataContext);
 
@@ -18,10 +18,10 @@ function Search() {
 
     //Finds data based on user text input
     const getSearchData = (e) => {
-        e.preventDefault(); 
+        e.preventDefault();
 
         const updateSearchType = "searchbar"
-        
+
         setSearchType(updateSearchType);
         const search = inputValue.toLowerCase().trim();
 
@@ -34,14 +34,16 @@ function Search() {
             setvalidInput(false);
         } else {
             navigate('/ExamsDisplay.jsx', { state: { inputValue, searchType: updateSearchType } })
+            window.scrollTo(0, 0);
         }
     };
 
     // Finds data based on Skeleton selection
     const getSkeletonData = (value) => {
         const updateSearchType = "skeleton"
-        setSearchType(updateSearchType); 
+        setSearchType(updateSearchType);
         navigate('/ExamsDisplay.jsx', { state: { inputValue: value, searchType: updateSearchType } })
+        window.scrollTo(0, 0);
     }
 
     return (
