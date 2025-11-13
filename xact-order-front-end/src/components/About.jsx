@@ -45,7 +45,7 @@ function About() {
                                 color: "#000000ff"
                             }}
                         >
-                            Why I Built It
+                            Why X-ACT ORDER Exists
                         </h1>
 
                         <p style={{ fontSize: "1.1rem", marginBottom: "15px" }}>
