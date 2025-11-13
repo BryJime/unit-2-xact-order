@@ -252,6 +252,14 @@ img {
   text-align: center;
 }
 
+.empty-error {
+  color: rgb(0, 0, 0);
+  margin-top: 1em;
+  font-weight: bold;
+  font-size: x-large;
+  text-align: center;
+}
+
 .shortcut-button {
   position: absolute;
   bottom: 13px;

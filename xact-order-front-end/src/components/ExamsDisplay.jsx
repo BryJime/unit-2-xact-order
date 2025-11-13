@@ -40,7 +40,12 @@ function ExamsDisplay() {
 
 
     if (typeof exams === "object" && Object.keys(exams).length === 0) {
-        return examStatus = "WOW, SUCH EMPTY!"
+        return examStatus = <div className="empty-error">
+            WOW, SUCH EMPTY!
+                <br/>
+                <br/>
+            NO EXAMS FOUND FOR {inputValue.toUpperCase()}
+            </div> 
     }
 
     // Finds data based on search value and displays all exams based on value
