@@ -49,6 +49,7 @@ function AddExamForm() {
             } catch (e) {
                 console.error('Error saving exam:', e);
             }
+            window.location.reload();
         }
     }
 
@@ -57,46 +58,46 @@ function AddExamForm() {
 
     return <form className="add-exam-form">
 
-        <label htmlFor="examName">Exam Name:
+        <label htmlFor="examName" className="exam-form-cell">Exam Name:
             <input className="exam-input" type="text" id="examName" name="name" onChange={handleChange} required />
         </label>
 
-        <label htmlFor="examViews">Views:
+        <label htmlFor="examViews" className="exam-form-cell">Views:
             <input className="exam-input" type="text" id="examViews" name="views" onChange={handleChange} required />
         </label>
 
-        <label htmlFor="examCPT">CPT Code:
+        <label htmlFor="examCPT" className="exam-form-cell">CPT Code:
             <input className="exam-input" type="text" id="examCPT" name="cptCode" onChange={handleChange} required />
         </label>
 
-        <label htmlFor="examDescription">Description:
-            <textarea className="exam-input" id="examDescription" name="description" onChange={handleChange} required />
-        </label>
 
-        <label htmlFor="examAlias">Alias:
+        <label htmlFor="examAlias" className="exam-form-cell">Alias:
             <input className="exam-input" type="text" id="examAlias" name="alias" onChange={handleChange} required />
         </label>
 
-        <label htmlFor="examRegion">Region:
+        <label htmlFor="examRegion" className="exam-form-cell">Region:
             <input className="exam-input" type="text" id="examRegion" name="region" onChange={handleChange} required />
         </label>
 
-        <label htmlFor="examAnatomy">Anatomy:
-            <input className="exam-input" type="text" id="examAnatomy" name="anatomy" onChange={handleChange} required />
+        <label htmlFor="examAnatomy" className="exam-form-cell">Anatomy:
+            <input className="exam-input" type="text" id="examAnatomy" name="anatomy" placeholder="*Must match Skeleton Anatomy*" onChange={handleChange} required />
         </label>
 
-        <label className="common-label">Common Exam:
+        <label htmlFor="examDescription" className="exam-form-cell">Description:
+            <textarea className="exam-input" id="examDescription" name="description" onChange={handleChange} required />
+        </label>
+             
+        <label className="exam-form-cell" >Common Exam:
             <input type="checkbox" name="common" onChange={handleChange} />
         </label>
 
-        <label className="common-label">Add to Shortcut:
+        <label className="exam-form-cell">Add to Shortcut:
             <input type="checkbox" name="shortcut" onChange={handleChange} />
         </label>
 
+            <button className="admin-button-clear" type="reset">Clear</button>
 
-        <button className="admin-button" type="reset">Clear</button>
-
-        <button className="admin-button" type="submit" onClick={saveExam} >Add Exam</button>
+            <button className="admin-button-add" type="submit" onClick={saveExam} >Add Exam</button>
     </form>
 }
 

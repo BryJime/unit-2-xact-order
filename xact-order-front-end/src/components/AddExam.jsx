@@ -80,7 +80,7 @@ function AddExam() {
                     <input className="exam-table-views-input" type="text" name="views" placeholder={exam.views.name} onChange={handleChange} required></input>
                 </td>
                 <td>
-                    <input className="exam-table-cpt-input" type="text" name="cptCode" placeholder={exam.cptCode.cptCode} onChange={handleChange} required></input>
+                    <input className="exam-table-cpt-input" type="text" name="cptCode" placeholder={exam.cptCode.cptCode} onChange={handleChange} style={{width: "50px"}} required></input>
                 </td>
                 <td>
                     <input className="exam-table-description-input" type="text" name="description" placeholder={exam.description.text} onChange={handleChange} required></input>
@@ -89,10 +89,10 @@ function AddExam() {
                     <input className="exam-table-alias-input" type="text" name="alias" placeholder={exam.alias.name} onChange={handleChange} required></input>
                 </td>
                 <td>
-                    <input className="exam-table-region-input" type="text" name="region" placeholder={exam.region} onChange={handleChange} required></input>
+                    <input className="exam-table-region-input" type="text" name="region" placeholder={exam.region} onChange={handleChange} style={{width: "80px"}}required></input>
                 </td>
                 <td>
-                    <input className="exam-table-anatomy-input" type="text" name="anatomy" placeholder={exam.anatomy.name} onChange={handleChange} required></input>
+                    <input className="exam-table-anatomy-input" type="text" name="anatomy" placeholder={exam.anatomy.name} onChange={handleChange} style={{width: "80px"}}required></input>
                 </td>
                 <td>
                     <input className="exam-table-common-input" type="checkbox" name="common" onChange={handleChange}></input>
@@ -185,6 +185,8 @@ function AddExam() {
                                 <th>Anatomy</th>
                                 <th>Common</th>
                                 <th>Shortcut</th>
+                                <th></th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
