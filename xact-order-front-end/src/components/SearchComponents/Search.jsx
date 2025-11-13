@@ -34,7 +34,6 @@ function Search() {
             setvalidInput(false);
         } else {
             navigate('/ExamsDisplay.jsx', { state: { inputValue, searchType: updateSearchType } })
-            window.scrollTo(0, 0);
         }
     };
 
@@ -43,7 +42,6 @@ function Search() {
         const updateSearchType = "skeleton"
         setSearchType(updateSearchType);
         navigate('/ExamsDisplay.jsx', { state: { inputValue: value, searchType: updateSearchType } })
-        window.scrollTo(0, 0);
     }
 
     return (

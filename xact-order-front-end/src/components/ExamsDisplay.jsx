@@ -1,5 +1,5 @@
 import { useLocation } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import Exam from "./Exam";
 import { DataContext } from "./DataContext.jsx";
 
@@ -7,17 +7,25 @@ import { DataContext } from "./DataContext.jsx";
 
 function ExamsDisplay() {
 
-    const { isLoading, allExams } = useContext(DataContext);
+    const { isLoading, allExams, error } = useContext(DataContext);
     const { state } = useLocation();
     const { inputValue, searchType } = state;
 
     let examStatus = '';
 
-    isLoading && (examStatus = <div className="loading-exams">LOADING EXAMS...</div>);
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
-    if (allExams === null) {
+
+    if (isLoading) {
+        return <div className="loading-exams">LOADING EXAMS...</div>;
+    }
+    if (error) {
         return examStatus = <div className="loading-exams-error">ERROR FETCHING EXAMS! *SERVER UNAVAILABLE*</div>
     }
+
+
 
     const search = inputValue.toLowerCase().trim();
 
@@ -42,10 +50,10 @@ function ExamsDisplay() {
     if (typeof exams === "object" && Object.keys(exams).length === 0) {
         return examStatus = <div className="empty-error">
             WOW, SUCH EMPTY!
-                <br/>
-                <br/>
+            <br />
+            <br />
             NO EXAMS FOUND FOR {inputValue.toUpperCase()}
-            </div> 
+        </div>
     }
 
     // Finds data based on search value and displays all exams based on value
