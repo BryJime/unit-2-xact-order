@@ -1,9 +1,7 @@
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Searchbar from "./Searchbar";
-
 import SkeletonSelection from "./SkeletonSelection";
-
 import { DataContext } from "../DataContext.jsx";
 
 function Search() {
@@ -11,52 +9,39 @@ function Search() {
     const [inputValue, setinputValue] = useState('');
     const [validInput, setvalidInput] = useState(true);
 
+    const [ searchType, setSearchType ] = useState('')
+
     const { allExams } = useContext(DataContext);
 
-    console.log("Input Value (Search.jsx): ", inputValue);
-
-
     const navigate = useNavigate();
-    //Assigned data variable to be passed with state via useNavigate
-    let storeData;
+
 
     //Finds data based on user text input
     const getSearchData = (e) => {
-        e.preventDefault();
+        e.preventDefault(); 
 
+        const updateSearchType = "skeleton"
+        
+        setSearchType(updateSearchType);
         const search = inputValue.toLowerCase().trim();
 
-        const exam = allExams.filter(exam => {
+        const findExam = allExams.filter(exam => {
             const aliasParts = exam.alias.name.toLowerCase().split(",");
             return aliasParts.some(part => part.trim().includes(search));
         });
 
-
-        storeData = exam;
-
-        if (!exam.length) {
+        if (!findExam.length) {
             setvalidInput(false);
         } else {
-            navigate('/ExamsDisplay.jsx', { state: { storeData, inputValue } })
+            navigate('/ExamsDisplay.jsx', { state: { inputValue, searchType: updateSearchType } })
         }
     };
 
     // Finds data based on Skeleton selection
     const getSkeletonData = (value) => {
-
-
-        setinputValue(value);
-
-        const exam = allExams.filter(exam => {
-            if (exam.anatomy.name.includes(value, 0)) {
-                return exam
-            }
-        })
-
-        storeData = exam;
-
-
-        navigate('/ExamsDisplay.jsx', { state: { storeData, inputValue } })
+        const updateSearchType = "skeleton"
+        setSearchType(updateSearchType); 
+        navigate('/ExamsDisplay.jsx', { state: { inputValue: value, searchType: updateSearchType } })
     }
 
     return (

@@ -1,23 +1,62 @@
 import { useLocation } from "react-router-dom";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import Exam from "./Exam";
+import { DataContext } from "./DataContext.jsx";
+
 
 
 function ExamsDisplay() {
 
+    const { isLoading, allExams } = useContext(DataContext);
     const { state } = useLocation();
-    const { storeData, inputValue } = state;
-    const [isActive, setIsActive] = useState(false);
+    const { inputValue, searchType } = state;
 
-    console.log("Data from context (ExamsDisplay.jsx): ", storeData)
+    console.log("searchType: ", searchType);
 
-    console.log("Input Value (ExamsDisplay.jsx): ", inputValue);
 
     let examStatus = '';
 
-    if (storeData === null) {
-        return examStatus = <div className="exam-status">ERROR LOADING EXAMS.</div>;
+
+
+
+    isLoading && <div className="loading-exams">LOADING EXAMS...</div>
+
+    if (allExams === null) {
+        return examStatus = <div className="loading-exams-error">ERROR FETCHING EXAMS!</div>
     }
+
+
+    console.log("Input Value: ", inputValue);
+    console.log("Exams Value 1: ", allExams);
+
+
+    const search = inputValue.toLowerCase().trim();
+
+    let exams = [];
+
+    if (searchType === "searchbar") {
+
+        exams = allExams.filter(exam => {
+            return exam.alias.name.toLowerCase().split(",").some(part => part.trim().includes(search));
+        });
+
+    } else if (searchType === "skeleton") {
+
+        exams = allExams.filter(exam => {
+            return exam.anatomy.name.includes(search)
+        })
+
+    }
+
+    if (exams = []) {
+        return examStatus = "NO EXAMS TO BE FOUND!"
+    }
+
+
+
+
+
+
 
     // Finds data based on search value and displays all exams based on value
     return (
@@ -28,11 +67,10 @@ function ExamsDisplay() {
                 <br></br>
                 <div>
                     {examStatus}
-                    {storeData.map((data) => {
+                    {exams.map((data) => {
 
                         const addShortcut = async () => {
-
-                            let selectedExam = storeData.find(d => data.id === d.id);
+                            let selectedExam = exam.find(d => data.id === d.id);
                             const updatedExam = {
                                 name: selectedExam.name,
                                 region: selectedExam.region,
@@ -44,9 +82,6 @@ function ExamsDisplay() {
                                 description: selectedExam.description.text,
                                 alias: selectedExam.alias.name
                             };
-
-
-                            console.log(storeData);
 
                             try {
                                 const response = await fetch(`http://localhost:8080/exams/update/${data.id}`, {
@@ -64,7 +99,7 @@ function ExamsDisplay() {
                             }
                         }
 
-                        return <Exam key={data.id} procedure={data.name} views={data.views.name} cpt={data.cptCode.cptCode} add={addShortcut} button="ADD SHORTCUT" isActive={isActive} setIsActive={setIsActive} description={data.description.text} />
+                        return <Exam key={data.id} procedure={data.name} views={data.views.name} cpt={data.cptCode.cptCode} add={addShortcut} button={data.shortcut ? "ADDED!" : "ADD SHORTCUT"} description={data.description.text} />
                     })}
                 </div>
             </div>
