@@ -3,7 +3,6 @@ import { useState, } from "react";
 
 function AddExamForm() {
 
-
     const [examData, setExamData] = useState({
         "name": "",
         "region": "",
@@ -15,7 +14,6 @@ function AddExamForm() {
         "description": "",
         "alias": ""
     });
-
 
 
     const handleChange = (e) => {
@@ -52,8 +50,6 @@ function AddExamForm() {
             window.location.reload();
         }
     }
-
-
 
 
     return <form className="add-exam-form">

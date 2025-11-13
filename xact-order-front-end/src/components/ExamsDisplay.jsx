@@ -1,5 +1,5 @@
 import { useLocation } from "react-router-dom";
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import Exam from "./Exam";
 import { DataContext } from "./DataContext.jsx";
 

@@ -55,9 +55,6 @@ function Shortcuts() {
     }
 
 
-
-
-
     return (
         <>
             <div className="shortcuts-title-feature">

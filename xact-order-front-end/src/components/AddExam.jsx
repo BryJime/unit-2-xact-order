@@ -1,4 +1,3 @@
-import ExamsData from "./ExamData/ExamsData.js";
 import AddExamForm from "./AddExamForm.jsx";
 import { useState, useContext } from "react";
 import { DataContext } from "./DataContext.jsx";
@@ -41,10 +40,10 @@ function AddExam() {
         }));
     }
 
+
     if (isLoading) {
         return <div className="loading-exams">Loading exams...</div>;
     }
-
 
 
     let currentExams = [];
