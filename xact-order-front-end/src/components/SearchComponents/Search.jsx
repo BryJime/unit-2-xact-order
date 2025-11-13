@@ -4,24 +4,25 @@ import Searchbar from "./Searchbar";
 import SkeletonSelection from "./SkeletonSelection";
 import { DataContext } from "../DataContext.jsx";
 
+// Search component that allows user to search for exams by text input or skeleton region selection
 function Search() {
 
     const [inputValue, setinputValue] = useState('');
     const [validInput, setvalidInput] = useState(true);
 
-    const [ searchType, setSearchType ] = useState('')
+    const [searchType, setSearchType] = useState('')
 
     const { allExams } = useContext(DataContext);
 
     const navigate = useNavigate();
 
 
-    //Finds data based on user text input
+    //Finds data based on user text input and navigates to ExamsDisplay component
     const getSearchData = (e) => {
-        e.preventDefault(); 
+        e.preventDefault();
 
         const updateSearchType = "searchbar"
-        
+
         setSearchType(updateSearchType);
         const search = inputValue.toLowerCase().trim();
 
@@ -37,10 +38,10 @@ function Search() {
         }
     };
 
-    // Finds data based on Skeleton selection
+    // Finds data based on Skeleton selection and navigates to ExamsDisplay component
     const getSkeletonData = (value) => {
         const updateSearchType = "skeleton"
-        setSearchType(updateSearchType); 
+        setSearchType(updateSearchType);
         navigate('/ExamsDisplay.jsx', { state: { inputValue: value, searchType: updateSearchType } })
     }
 

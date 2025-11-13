@@ -1,9 +1,8 @@
-import ExamsData from "./ExamData/ExamsData.js";
 import AddExamForm from "./AddExamForm.jsx";
 import { useState, useContext } from "react";
 import { DataContext } from "./DataContext.jsx";
 
-
+// Component for adding, editing, and deleting exams
 function AddExam() {
 
     const { isLoading, allExams } = useContext(DataContext);
@@ -12,6 +11,7 @@ function AddExam() {
 
     const [editingId, setEditingId] = useState(null);
 
+    // State for storing exam data during editing
     const [examData, setExamData] = useState({
         "name": "",
         "region": "",
@@ -27,9 +27,10 @@ function AddExam() {
     let examStatus = '';
 
     if (allExams === null) {
-        return examStatus = <div className="exam-status">ERROR LOADING EXAMS.</div>;
+        return examStatus = <div className="loading-exams-error">ERROR FETCHING EXAMS! *SERVER UNAVAILABLE*</div>;
     }
-
+    
+    // Handles changes to exam data inputs during editing
     const handleChange = (e) => {
         e.preventDefault();
 
@@ -41,14 +42,14 @@ function AddExam() {
         }));
     }
 
+    // Displays loading message while exams are being fetched
     if (isLoading) {
         return <div className="loading-exams">Loading exams...</div>;
     }
 
-
-
     let currentExams = [];
 
+    // Renders exam list, either in view or edit mode
     !isEditing ? currentExams = allExams.map(exam =>
     (
 
@@ -80,7 +81,7 @@ function AddExam() {
                     <input className="exam-table-views-input" type="text" name="views" placeholder={exam.views.name} onChange={handleChange} required></input>
                 </td>
                 <td>
-                    <input className="exam-table-cpt-input" type="text" name="cptCode" placeholder={exam.cptCode.cptCode} onChange={handleChange} required></input>
+                    <input className="exam-table-cpt-input" type="text" name="cptCode" placeholder={exam.cptCode.cptCode} onChange={handleChange} style={{width: "50px"}} required></input>
                 </td>
                 <td>
                     <input className="exam-table-description-input" type="text" name="description" placeholder={exam.description.text} onChange={handleChange} required></input>
@@ -89,10 +90,10 @@ function AddExam() {
                     <input className="exam-table-alias-input" type="text" name="alias" placeholder={exam.alias.name} onChange={handleChange} required></input>
                 </td>
                 <td>
-                    <input className="exam-table-region-input" type="text" name="region" placeholder={exam.region} onChange={handleChange} required></input>
+                    <input className="exam-table-region-input" type="text" name="region" placeholder={exam.region} onChange={handleChange} style={{width: "80px"}}required></input>
                 </td>
                 <td>
-                    <input className="exam-table-anatomy-input" type="text" name="anatomy" placeholder={exam.anatomy.name} onChange={handleChange} required></input>
+                    <input className="exam-table-anatomy-input" type="text" name="anatomy" placeholder={exam.anatomy.name} onChange={handleChange} style={{width: "80px"}}required></input>
                 </td>
                 <td>
                     <input className="exam-table-common-input" type="checkbox" name="common" onChange={handleChange}></input>
@@ -185,6 +186,8 @@ function AddExam() {
                                 <th>Anatomy</th>
                                 <th>Common</th>
                                 <th>Shortcut</th>
+                                <th></th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>

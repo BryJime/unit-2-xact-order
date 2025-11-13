@@ -1,4 +1,4 @@
-
+// Reusable data context for managing exam data across the application
 import { createContext, useEffect, useState } from "react";
 
 export const DataContext = createContext();
@@ -10,9 +10,14 @@ export const DataProvider = ({ children }) => {
 
     const [isLoading, setIsLoading] = useState(true);
 
+    const [error, setError] = useState(false);
+
     const fetchExams = async () => {
 
         try {
+            setIsLoading(true);
+            setError(false);
+
             const response = await fetch('http://localhost:8080/exams/all', {
                 method: 'GET',
                 headers: {
@@ -23,22 +28,23 @@ export const DataProvider = ({ children }) => {
 
             if (!response.ok) {
 
-                let error = await response.json();
+                let errData = await response.json();
 
-                throw new Error(error.message || '******Failed to fetch exams********');
+                throw new Error(errData.message || '******Failed to fetch exams********');
 
 
-            } else {
-                const data = await response.json();
-
-                setAllExams(data);
-                setIsLoading(false);
             }
 
+            const data = await response.json();
 
-        } catch (error) {
-            
-            console.error('**********Error fetching exams***********:', error);
+            setAllExams(data);
+
+        } catch (e) {
+            console.error('**********Error fetching exams***********:', e);
+            setError(true);
+            setAllExams(null);
+        } finally {
+            setIsLoading(false);
         }
     }
 
@@ -47,7 +53,7 @@ export const DataProvider = ({ children }) => {
     }, []);
 
     return (
-        <DataContext.Provider value={{ fetchExams, allExams, isLoading }}>
+        <DataContext.Provider value={{ fetchExams, allExams, isLoading, error }}>
             {children}
         </DataContext.Provider>
     )

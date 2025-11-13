@@ -1,5 +1,5 @@
 import { useLocation } from "react-router-dom";
-import { useState, useContext } from "react";
+import { useContext, useEffect } from "react";
 import Exam from "./Exam";
 import { DataContext } from "./DataContext.jsx";
 
@@ -7,22 +7,31 @@ import { DataContext } from "./DataContext.jsx";
 
 function ExamsDisplay() {
 
-    const { isLoading, allExams } = useContext(DataContext);
+    const { isLoading, allExams, error } = useContext(DataContext);
     const { state } = useLocation();
     const { inputValue, searchType } = state;
 
     let examStatus = '';
 
-    isLoading && <div className="loading-exams">LOADING EXAMS...</div>
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
-    if (allExams === null) {
-        return examStatus = <div className="loading-exams-error">ERROR FETCHING EXAMS!</div>
+
+    if (isLoading) {
+        return <div className="loading-exams">LOADING EXAMS...</div>;
     }
+    if (error) {
+        return examStatus = <div className="loading-exams-error">ERROR FETCHING EXAMS! *SERVER UNAVAILABLE*</div>
+    }
+
+
 
     const search = inputValue.toLowerCase().trim();
 
     let exams = [];
 
+    // Finds data based on search type
     if (searchType === "searchbar") {
 
         exams = allExams.filter(exam => {
@@ -40,14 +49,21 @@ function ExamsDisplay() {
 
 
     if (typeof exams === "object" && Object.keys(exams).length === 0) {
-        return examStatus = "WOW, SUCH EMPTY!"
+        return examStatus = <div className="empty-error">
+            WOW, SUCH EMPTY!
+            <br />
+            <br />
+            NO EXAMS FOUND FOR {inputValue.toUpperCase()}
+        </div>
     }
 
-    // Finds data based on search value and displays all exams based on value
+    // Renders the exam display page with filtered exams
     return (
         <>
             <div className="exam-display-page">
-                <h1 className="exam-title-display">{`${inputValue.toUpperCase()} EXAMS: `}</h1>
+                <h1 className="exam-title-display">{inputValue.trim() === ""
+                    ? "ALL EXAMS:"
+                    : `${inputValue.toUpperCase()} EXAMS:`}</h1>
                 <hr className="exams-display-line"></hr>
                 <br></br>
                 <div>
