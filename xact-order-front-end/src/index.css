@@ -174,17 +174,17 @@ img {
 
 .exam-display {
   display: flex;
-  flex-direction: column; /* Stack content vertically */
-  align-items: flex-start; /* Align items to the start */
-  justify-content: flex-start; /* Ensure content starts at the top */
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
   width: auto;
   border-radius: 30px;
-  overflow: hidden; /* Prevent content from overflowing */
+  overflow: hidden;
   margin-top: 3em;
   margin-bottom: 3em;
   background-color: rgb(67, 72, 102);
-  position: relative; /* Ensure relative positioning for child elements */
   transition: all 0.3s ease;
+  position: relative;
 }
 
 .exam-display:hover {
@@ -194,22 +194,20 @@ img {
 }
 
 .exam-display-expanded {
-  width: 100%; /* Ensure it takes the full width of the card */
-  margin-top: 2em; /* Add spacing between the card content and description */
-  padding: 1em; /* Add padding for better readability */
+  width: 100%;
+  height: auto;
+  padding: 1em;
 }
 
 .exam-display-description {
-  position: absolute;
-  bottom: 1em;
-  left: 1em;
-  right: 1em;
   font-size: 1.2em;
-  padding-left: 1em;
+  padding: 1em;
+  margin-right: 8em;
   color: rgb(225, 241, 255);
+  position: relative;
 }
 
-.exam-display-header {  
+.exam-display-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -248,15 +246,8 @@ img {
 
 .shortcut-button {
   position: absolute;
-  bottom: 20px;
-  right: 20px; 
-  font-weight: bold;
-  padding: 10px 20px; 
-  background-color: #fff;
-  border: 1px solid #2b2b2b;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: 0.2s ease;
+  bottom: 13px;
+  right: 32px;
 }
 
 .shortcut-button:hover {
@@ -293,9 +284,9 @@ img {
 }
 
 .login-button {
-  font-size: 1rem;          
+  font-size: 1rem;
   padding: 10px 20px;
-  margin:  12px 0;
+  margin: 12px 0;
   border-radius: 10px;
   border: 1px solid #2b2b2b;
   background: #fff;
@@ -351,15 +342,15 @@ img {
 
 .admin-button {
   justify-self: start;
-  font-size: 1rem;          
+  font-size: 1rem;
   padding: 10px 20px;
-  margin:  12px 0;
+  margin: 12px 0;
   border-radius: 10px;
   border: 1px solid #2b2b2b;
   background: #fff;
   cursor: pointer;
   transition: 0.2s ease;
-  
+
 }
 
 .admin-button:hover {
@@ -416,23 +407,23 @@ td {
 
 .skeleton-selection {
   display: flex;
-  justify-content: center;   /* centers horizontally */
-  align-items: center;       /* centers vertically against the image */
-  gap: 40px;                 /* space between the buttons and the image */
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
 }
 
 .skeleton-list {
   display: flex;
-  flex-direction: column;    /* stack buttons vertically */
-  justify-content: center;   /* center buttons inside the list container */
-  align-items: center;       /* keep them aligned in the middle */
-  gap: 6em;                  /* even spacing between buttons */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6em;
 }
 
 .anatomy-button {
-  font-size: 1rem;          
+  font-size: 1rem;
   padding: 20px 20px 20px 20px;
-  margin:  12px 20px;
+  margin: 12px 20px;
   border-radius: 10px;
   border: 1px solid #2b2b2b;
   background: #fff;
@@ -449,7 +440,7 @@ td {
 
 .skeleton-svg {
   max-width: 100%;
-  
+
   height: auto;
 }
 
@@ -461,7 +452,7 @@ td {
 
 .human-skeleton {
   overflow: hidden;
-  max-width: 420px; 
+  max-width: 420px;
 }
 
 .s-region {
@@ -469,13 +460,13 @@ td {
 }
 
 .s-region--hover {
-  fill: #5EEAD4 !important; 
+  fill: #5EEAD4 !important;
   transform-origin: center;
 }
 
 .s-region--active {
-  fill: #14B8A6 !important; 
-  filter: drop-shadow(0 6px 10px rgba(58,123,230,0.25));
+  fill: #14B8A6 !important;
+  filter: drop-shadow(0 6px 10px rgba(58, 123, 230, 0.25));
 }
 
 
@@ -519,7 +510,7 @@ td {
 
   .exam-display {
     flex-wrap: wrap;
-    
+
   }
 }
 

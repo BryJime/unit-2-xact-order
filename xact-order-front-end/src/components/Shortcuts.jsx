@@ -10,8 +10,6 @@ function Shortcuts() {
 
     const [examValues, setExamValues] = useState([]);
 
-    console.log(examValues)
-
     let shortcutButton;
 
     useEffect(() => {
@@ -36,9 +34,6 @@ function Shortcuts() {
             description: selectedExam.description.text,
             alias: selectedExam.alias.name
         };
-
-
-        console.log(updatedExam);
 
         try {
             const response = await fetch(`http://localhost:8080/exams/update/${id}`, {
@@ -73,7 +68,7 @@ function Shortcuts() {
                 {examValues.map((data) => {
                     if (data.shortcut === true) {
                         shortcutButton = "REMOVE SHORTCUT";
-                        return <Exam key={data.id} procedure={data.name} views={data.views.name} cpt={data.cptCode.cptCode} button={shortcutButton} add={() => removeShortcut(data.id)} />
+                        return <Exam key={data.id} procedure={data.name} views={data.views.name} cpt={data.cptCode.cptCode} button={shortcutButton} add={() => removeShortcut(data.id)} description={data.description.text}/>
                     }
                 })}
             </div>

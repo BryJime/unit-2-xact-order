@@ -19,11 +19,7 @@ function ExamsDisplay() {
         return examStatus = <div className="loading-exams-error">ERROR FETCHING EXAMS!</div>
     }
 
-
-
-
     const search = inputValue.toLowerCase().trim();
-    console.log(search);
 
     let exams = [];
 
@@ -42,8 +38,6 @@ function ExamsDisplay() {
 
     }
 
-    console.log("Exams Value 2: ", exams);
-
 
     if (typeof exams === "object" && Object.keys(exams).length === 0) {
         return examStatus = "WOW, SUCH EMPTY!"
@@ -60,7 +54,7 @@ function ExamsDisplay() {
                     {examStatus}
                     {exams.map((data) => {
 
-                        const addShortcut = async () => {   
+                        const addShortcut = async () => {
                             const updatedExam = {
                                 name: data.name,
                                 region: data.region,
