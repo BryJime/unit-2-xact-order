@@ -1,18 +1,14 @@
-import { useState, useContext } from "react";
-import ExamsData from "./ExamData/ExamsData";
-import { DataContext } from "./DataContext";
+import { useState, } from "react";
 
 
 function AddExamForm() {
-
-    const { allExams } = useContext(DataContext);
 
 
     const [examData, setExamData] = useState({
         "name": "",
         "region": "",
-        "shortcut": false,
-        "common": true,
+        "shortcut": null,
+        "common": null,
         "cptCode": "",
         "anatomy": "",
         "views": "",
@@ -35,26 +31,26 @@ function AddExamForm() {
 
 
     const saveExam = async () => {
+        if ((window.confirm("ADD EXAM?"))) {
+            try {
+                const response = await fetch('http://localhost:8080/exams/add', {
+                    method: 'POST',
+                    body: JSON.stringify(examData),
+                    headers: {
+                        "Content-type": "application/json"
+                    }
+                });
 
-        try {
-            const response = await fetch('http://localhost:8080/exams/add', {
-                method: 'POST',
-                body: JSON.stringify(examData),
-                headers: {
-                    "Content-type": "application/json"
+                if (!response.ok) {
+                    let error = await response.json();
+                    throw new Error(error.message || 'Failed to POST exam');
                 }
-            });
 
-            if (!response.ok) {
-                let error = await response.json();
-                throw new Error(error.message || 'Failed to POST exam');
+            } catch (e) {
+                console.error('Error saving exam:', e);
             }
-
-        } catch (e) {
-            console.error('Error saving exam:', e);
         }
     }
-
 
 
 
@@ -91,6 +87,10 @@ function AddExamForm() {
 
         <label className="common-label">Common Exam:
             <input type="checkbox" name="common" onChange={handleChange} />
+        </label>
+
+        <label className="common-label">Add to Shortcut:
+            <input type="checkbox" name="shortcut" onChange={handleChange} />
         </label>
 
 

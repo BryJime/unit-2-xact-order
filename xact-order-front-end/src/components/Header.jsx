@@ -24,8 +24,8 @@ function Header() {
                         </Link>
                     </section>
                     <section className="header-admin">
-                        <Link to="/AdminLogin">
-                            ADMIN
+                        <Link to="/AddExam.jsx">
+                            ADD
                         </Link>
                     </section>
                 </section>

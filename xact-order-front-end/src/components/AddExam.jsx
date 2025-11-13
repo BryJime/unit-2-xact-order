@@ -1,10 +1,10 @@
-import ExamsData from "./ExamData/ExamsData";
-import AddExamForm from "./AddExamForm";
+import ExamsData from "./ExamData/ExamsData.js";
+import AddExamForm from "./AddExamForm.jsx";
 import { useState, useContext } from "react";
 import { DataContext } from "./DataContext.jsx";
 
 
-function Admin() {
+function AddExam() {
 
     const { isLoading, allExams } = useContext(DataContext);
 
@@ -15,14 +15,20 @@ function Admin() {
     const [examData, setExamData] = useState({
         "name": "",
         "region": "",
-        "shortcut": false,
-        "common": true,
+        "shortcut": null,
+        "common": null,
         "cptCode": "",
         "anatomy": "",
         "views": "",
         "description": "",
         "alias": ""
     })
+
+    let examStatus = '';
+
+    if (allExams === null) {
+        return examStatus = <div className="exam-status">ERROR LOADING EXAMS.</div>;
+    }
 
     const handleChange = (e) => {
         e.preventDefault();
@@ -35,9 +41,11 @@ function Admin() {
         }));
     }
 
-    if (isLoading || !allExams) {
+    if (isLoading) {
         return <div className="loading-exams">Loading exams...</div>;
     }
+
+
 
     let currentExams = [];
 
@@ -54,6 +62,7 @@ function Admin() {
             <td>{exam.region}</td>
             <td>{exam.anatomy.name}</td>
             <td>{exam.common ? "Yes" : "No"}</td>
+            <td>{exam.shortcut ? "Yes" : "No"}</td>
             <td><button className="delete-exam-button" onClick={() => deleteExam(exam.id)}>DELETE</button></td>
             <td><button className="edit-exam-button" onClick={() => startEditing(exam.id)} >EDIT</button></td>
         </tr>
@@ -65,28 +74,31 @@ function Admin() {
             return <tr key={exam.id}>
                 <td>{exam.id}</td>
                 <td>
-                    <input className="exam-table-name-input" type="text" name="name" onChange={handleChange}></input>
+                    <input className="exam-table-name-input" type="text" name="name" placeholder={exam.name} onChange={handleChange} required></input>
                 </td>
                 <td>
-                    <input className="exam-table-views-input" type="text" name="views" onChange={handleChange}></input>
+                    <input className="exam-table-views-input" type="text" name="views" placeholder={exam.views.name} onChange={handleChange} required></input>
                 </td>
                 <td>
-                    <input className="exam-table-cpt-input" type="text" name="cptCode" onChange={handleChange}></input>
+                    <input className="exam-table-cpt-input" type="text" name="cptCode" placeholder={exam.cptCode.cptCode} onChange={handleChange} required></input>
                 </td>
                 <td>
-                    <input className="exam-table-description-input" type="text" name="description" onChange={handleChange}></input>
+                    <input className="exam-table-description-input" type="text" name="description" placeholder={exam.description.text} onChange={handleChange} required></input>
                 </td>
                 <td>
-                    <input className="exam-table-alias-input" type="text" name="alias" onChange={handleChange}></input>
+                    <input className="exam-table-alias-input" type="text" name="alias" placeholder={exam.alias.name} onChange={handleChange} required></input>
                 </td>
                 <td>
-                    <input className="exam-table-region-input" type="text" name="region" onChange={handleChange}></input>
+                    <input className="exam-table-region-input" type="text" name="region" placeholder={exam.region} onChange={handleChange} required></input>
                 </td>
                 <td>
-                    <input className="exam-table-anatomy-input" type="text" name="anatomy" onChange={handleChange}></input>
+                    <input className="exam-table-anatomy-input" type="text" name="anatomy" placeholder={exam.anatomy.name} onChange={handleChange} required></input>
                 </td>
                 <td>
                     <input className="exam-table-common-input" type="checkbox" name="common" onChange={handleChange}></input>
+                </td>
+                <td>
+                    <input className="exam-table-shortcut-input" type="checkbox" name="shortcut" onChange={handleChange}></input>
                 </td>
                 <td><button className="delete-exam-button" onClick={() => updateExam(exam.id)}>SAVE</button></td>
                 <td><button className="delete-exam-button" onClick={() => setIsEditing(false)}>CANCEL</button></td>
@@ -148,11 +160,11 @@ function Admin() {
     }
 
 
-
-
-
     return (
         <div>
+
+            {examStatus}
+
             <AddExamForm />
 
             <hr className="line" />
@@ -172,6 +184,7 @@ function Admin() {
                                 <th>Region</th>
                                 <th>Anatomy</th>
                                 <th>Common</th>
+                                <th>Shortcut</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -184,4 +197,4 @@ function Admin() {
     );
 }
 
-export default Admin;
+export default AddExam;

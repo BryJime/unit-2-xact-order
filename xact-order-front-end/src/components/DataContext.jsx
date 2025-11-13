@@ -7,8 +7,8 @@ export const DataContext = createContext();
 export const DataProvider = ({ children }) => {
 
     const [allExams, setAllExams] = useState(null);
-    
-    const [ isLoading, setIsLoading ] = useState(true);
+
+    const [isLoading, setIsLoading] = useState(true);
 
     const fetchExams = async () => {
 
@@ -21,23 +21,25 @@ export const DataProvider = ({ children }) => {
             });
 
 
-            if ( !response.ok ) {
-                
+            if (!response.ok) {
+
                 let error = await response.json();
-                
-                throw new Error(error.message || 'Failed to fetch exams');
+
+                throw new Error(error.message || '******Failed to fetch exams********');
+
 
             } else {
                 const data = await response.json();
-                
+
                 setAllExams(data);
                 setIsLoading(false);
             }
 
 
         } catch (error) {
-            console.error('Error fetching exams:', error);
-        } 
+            
+            console.error('**********Error fetching exams***********:', error);
+        }
     }
 
     useEffect(() => {
