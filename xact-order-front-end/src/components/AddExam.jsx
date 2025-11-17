@@ -26,7 +26,7 @@ function AddExam() {
 
     let examStatus = '';
 
-    if (allExams === null) {
+    if (allExams === null && !isLoading) {
         return examStatus = <div className="loading-exams-error">ERROR FETCHING EXAMS! *SERVER UNAVAILABLE*</div>;
     }
     
@@ -58,7 +58,7 @@ function AddExam() {
             <td>{exam.name}</td>
             <td>{exam.views.name}</td>
             <td>{exam.cptCode.cptCode}</td>
-            <td>{exam.description.text}</td>
+            <td style={{whiteSpace: "pre-wrap"}} >{exam.description.text}</td>
             <td>{exam.alias.name}</td>
             <td>{exam.region}</td>
             <td>{exam.anatomy.name}</td>
@@ -84,7 +84,7 @@ function AddExam() {
                     <input className="exam-table-cpt-input" type="text" name="cptCode" placeholder={exam.cptCode.cptCode} onChange={handleChange} style={{width: "50px"}} required></input>
                 </td>
                 <td>
-                    <input className="exam-table-description-input" type="text" name="description" placeholder={exam.description.text} onChange={handleChange} required></input>
+                    <textarea className="exam-table-description-input" type="text" name="description" placeholder={exam.description.text} onChange={handleChange} style={{width: "200px"}} required></textarea>
                 </td>
                 <td>
                     <input className="exam-table-alias-input" type="text" name="alias" placeholder={exam.alias.name} onChange={handleChange} required></input>

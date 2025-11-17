@@ -81,7 +81,7 @@ function AddExamForm() {
         </label>
 
         <label htmlFor="examDescription" className="exam-form-cell">Description:
-            <textarea className="exam-input" id="examDescription" name="description" onChange={handleChange} required />
+            <textarea className="exam-input" id="examDescription" name="description" onChange={handleChange} style={{whiteSpace: "pre-wrap"}} required />
         </label>
              
         <label className="exam-form-cell" >Common Exam:
