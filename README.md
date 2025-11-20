@@ -3,7 +3,7 @@
 # X-ACT ORDER
 X-Act Order was built to reduce confusion on imaging orders by providing medical staff, patients and providers with accurate exam metadata, helping streamline exam ordering, decrease callback on ordering errors, and making workflows more efficient. It allows for users to search for exams via search bar, or interactive skeleton, and displays information about the exams such as the exam name, views, cpt code and descriptions that can contain exam purpose, indications and other information relavent medical workers. It also serves as an educational tool for radiology students or patients that want to know more about radiology procedures!
 
-![Homepage](/Images/HomepageScreenshot.png)
+<img width="2535" height="1396" alt="Image" src="https://github.com/user-attachments/assets/e9a1c1b0-6e3e-4a2b-bd4e-34d3973f0619" />
 
 # Key Features:
 
@@ -12,15 +12,15 @@ X-Act Order was built to reduce confusion on imaging orders by providing medical
 ### Interactive Skeleton - Search for exams with selections that dynamically highlight regions on a skeleton.
 <details>
     <summary>Click to see Search Feature </summary> 
-    <img src="![Search](/Images/SearchScreenshot.png)" alt="Search Screenshot" />
+    <img width="2536" height="1397" alt="Image" src="https://github.com/user-attachments/assets/f7ec9fa8-f31b-470d-bbe9-67838ec44aa2" />
 </details> 
 
 ## Exam Display:
 ### Displays all or filtered Exams containing thier name, views, and CPT Code. When the Exam card is clicked on, it displays relavent information pertaining to that procedure.
 <details>
     <summary>Click to see Exam Display </summary> 
-    <img src="![Exam Display](/Images/ExamDisplayScreenshot.png)" alt="Exam Display Screenshot" />
-    <img src="![Exam Card](/Images/ExamScreenshot.png)" alt="Exam Card Screenshot" />
+    <img width="2535" height="1393" alt="Image" src="https://github.com/user-attachments/assets/a0e5dcf6-21a0-4f43-8674-b52d1f07bb9a" />    
+    <img width="2535" height="1402" alt="Image" src="https://github.com/user-attachments/assets/29dc961d-0f3e-4889-8ef3-38b71e8199e5" />
 </details> 
 
 ## Shortcuts: 
@@ -30,7 +30,7 @@ X-Act Order was built to reduce confusion on imaging orders by providing medical
 ### Allows for the user to add their own exam and/or view all exams that are in the database. Specific data can be directly edited or deleted from the database that updates the frontend in real-time. 
 <details>
     <summary>Click to see Exam Add Feature </summary> 
-    <img src="![Exam Add](/Images/ExamAddScreenShot.png)" alt="ExamAdd Screenshot" />
+    <img width="2537" height="1390" alt="Image" src="https://github.com/user-attachments/assets/be0bef53-e6e3-4b0a-a9c2-ebd9b83f122b" />
 </details>
 
 ## Tech Stack:
@@ -76,13 +76,13 @@ Needs to be changed in Java if frontend is being hosted on a different port.
 # Wireframes
 <details>
     <summary>Click to see WireFrames </summary> 
-    <img src="![WireFrames](/Images/WireFramesScreenShot)" alt="WireFrames Screenshot" />
+    <img width="2201" height="1200" alt="Image" src="https://github.com/user-attachments/assets/c3736926-7daa-49c4-ad7f-e811f8d84df4" />
 </details>
 
 # ERD (DataBase Structure)
 <details>
     <summary>Click to see ERD </summary> 
-    <img src="![ERD](/Images/ERDScreenshot.png)" alt="ERD Screenshot" />
+    <img width="1726" height="1256" alt="Image" src="https://github.com/user-attachments/assets/d25057a2-50bd-4fc0-b6db-5d49c5eff73f" />
 </details>
 
 # Future Improvments
