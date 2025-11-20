@@ -61,7 +61,9 @@ It serves as an educational tool for radiology students, patients or ANYONE that
 ### Displays all or filtered Exams containing their name, views, and CPT Code. When the Exam card is clicked on, it displays relevant information pertaining to that procedure.
 <details>
     <summary>Click to see Exam Display </summary> 
-    <img width="2535" height="1393" alt="Image" src="https://github.com/user-attachments/assets/a0e5dcf6-21a0-4f43-8674-b52d1f07bb9a" />    
+    <p> Collapsed Exam Card: </p>
+    <img width="2535" height="1393" alt="Image" src="https://github.com/user-attachments/assets/a0e5dcf6-21a0-4f43-8674-b52d1f07bb9a" />
+    <p> Expanded Exam Card: </p>    
     <img width="2535" height="1402" alt="Image" src="https://github.com/user-attachments/assets/29dc961d-0f3e-4889-8ef3-38b71e8199e5" />
 </details> 
 
