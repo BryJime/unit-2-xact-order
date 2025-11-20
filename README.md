@@ -1,14 +1,53 @@
+## Table of Contents
+- [About](#about)
+- [Key Features](#key-features)
+- [Tech Stack](#tech-stack)
+- [Installation Requirements](#installation-requirements)
+- [API Endpoints](#api-endpoints)
+- [Wireframes](#wireframes)
+- [Database Structure](#erd-database-structure)
+- [Future Improvements](#future-improvements)
+- [Creator](#creator)
 
 
-# X-ACT ORDER
-X-Act Order was built to reduce confusion on imaging orders by providing medical staff, patients and providers with accurate exam metadata, helping streamline exam ordering, decrease callback on ordering errors, and making workflows more efficient. It allows for users to search for exams via search bar, or interactive skeleton, and displays information about the exams such as the exam name, views, cpt code and descriptions that can contain exam purpose, indications and other information relavent medical workers. It also serves as an educational tool for radiology students or patients that want to know more about radiology procedures!
+# About
+X-Act Order was built to reduce confusion on imaging orders by providing medical staff, patients and providers with accurate exam metadata, helping streamline exam ordering, decrease callback on ordering errors, and making workflows more efficient. 
+
+It serves as an educational tool for radiology students, patients or ANYONE that wants to know more about radiology procedures!
+
+<details>
+    <summary>Who it's for </summary> 
+    <ul> 
+        <li> Physicians </li>
+        <li> Nurses </li>
+        <li> Rad Techs </li>
+        <li> Students </li>
+        <li> Anyone </li>
+    </ul>
+</details> 
+<details>
+    <summary>Why it matters </summary> 
+    <ul> 
+        <li> Incorrect imaging orders slow down workflow. Every department should have a consistent naming standard that matches how exams are actually performed at that facility. </li>
+        <li> Staff and patients should have quick and accessible information about an exam to improve outcomes of procedures. </li>
+    </ul>
+</details> 
+<details>
+    <summary>What it solves </summary> 
+    <ul> 
+        <li> Exams ordered with incorrect names or projections </li>
+        <li> Patients with confusion or questions relating to an exam </li>
+        <li> Rad Techs that need a quick reference guide </li>
+        <li> Students lacking accessible learning tools for the specific facility </li>
+    </ul>
+</details> 
 
 <img width="2535" height="1396" alt="Image" src="https://github.com/user-attachments/assets/e9a1c1b0-6e3e-4a2b-bd4e-34d3973f0619" />
 
 # Key Features:
 
 ## Search Feature:
-### Search Bar - Search for exams by thier names or keywords/aliases that are accociated with the procedure. 
+### Search Bar - Search for exams by their names or keywords/aliases that are associated with the procedure. 
 ### Interactive Skeleton - Search for exams with selections that dynamically highlight regions on a skeleton.
 <details>
     <summary>Click to see Search Feature </summary> 
@@ -16,7 +55,7 @@ X-Act Order was built to reduce confusion on imaging orders by providing medical
 </details> 
 
 ## Exam Display:
-### Displays all or filtered Exams containing thier name, views, and CPT Code. When the Exam card is clicked on, it displays relavent information pertaining to that procedure.
+### Displays all or filtered Exams containing their name, views, and CPT Code. When the Exam card is clicked on, it displays relevant information pertaining to that procedure.
 <details>
     <summary>Click to see Exam Display </summary> 
     <img width="2535" height="1393" alt="Image" src="https://github.com/user-attachments/assets/a0e5dcf6-21a0-4f43-8674-b52d1f07bb9a" />    
@@ -34,7 +73,7 @@ X-Act Order was built to reduce confusion on imaging orders by providing medical
 </details>
 
 ## Tech Stack:
-## Front End - 
+## Front End 
 -   JavaScript
 -   React
 -   Vite
@@ -42,7 +81,7 @@ X-Act Order was built to reduce confusion on imaging orders by providing medical
 -   Framer Motion
 -   CSS
 -   JSX
-## Back End - 
+## Back End 
 -   Java
 -   Spring Boot
 -   Maven
@@ -66,7 +105,7 @@ Needs to be changed in Java if frontend is being hosted on a different port.
 | HTTP Method   | Endpoint         | Description                 |
 | :-----------: | :------------:   | :-------------------------: |
 | GET           | /exams/all       | Fetches a list of all exams |
-| GET           | /exams/id        | Retreives individual exam   |
+| GET           | /exams/id        | Retrieves individual exam   |
 | PUT           | /exams/update/id | Edits individual exam 
 | POST          | /exams/add       | Adds an exam to database    |
 | DELETE        | /exams/delete/id | Deletes an individual id.   |
@@ -75,17 +114,17 @@ Needs to be changed in Java if frontend is being hosted on a different port.
 
 # Wireframes
 <details>
-    <summary>Click to see WireFrames </summary> 
+    <summary>Click to see Wireframes </summary> 
     <img width="2201" height="1200" alt="Image" src="https://github.com/user-attachments/assets/c3736926-7daa-49c4-ad7f-e811f8d84df4" />
 </details>
 
-# ERD (DataBase Structure)
+# ERD (Database Structure)
 <details>
     <summary>Click to see ERD </summary> 
     <img width="1726" height="1256" alt="Image" src="https://github.com/user-attachments/assets/d25057a2-50bd-4fc0-b6db-5d49c5eff73f" />
 </details>
 
-# Future Improvments
+# Future Improvements
 * Implement Login page with Backend Authentication
 * Add filter options to find exam types faster
 * Store x-ray Images and display them for each exam
