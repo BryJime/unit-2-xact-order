@@ -1,17 +1,20 @@
+# X-Act Order
+
 ## Table of Contents
 - [About](#about)
 - [Key Features](#key-features)
 - [Tech Stack](#tech-stack)
 - [Installation Requirements](#installation-requirements)
+- [Installation Instructions](#installation-instructions)
 - [API Endpoints](#api-endpoints)
 - [Wireframes](#wireframes)
 - [Database Structure](#erd-database-structure)
 - [Future Improvements](#future-improvements)
 - [Creator](#creator)
-
+<br>
 
 # About
-X-Act Order was built to reduce confusion on imaging orders by providing medical staff, patients and providers with accurate exam metadata, helping streamline exam ordering, decrease callback on ordering errors, and making workflows more efficient. 
+X-Act Order was built to reduce confusion on imaging orders by providing medical staff, patients and providers with accurate exam metadata, helping streamline exam ordering, decrease callbacks on ordering errors, and making workflows more efficient. 
 
 It serves as an educational tool for radiology students, patients or ANYONE that wants to know more about radiology procedures!
 
@@ -97,9 +100,21 @@ It serves as an educational tool for radiology students, patients or ANYONE that
 * .env file to store SQL username and password saved under DB_USERNAME and DB_PASSWORD. 
 * Java Development Kit (JDK) 17
 * MySQL Server (version 8.0+)
-* To avoid CORS error, CrossOrigin(origins = "http://localhost:5173")
-Needs to be changed in Java if frontend is being hosted on a different port.
+* To avoid CORS errors, update `CrossOrigin(origins = "http://localhost:5173")` in the backend if the frontend runs on a different port.
 
+# Installation Instructions
+## Front End
+* Clone the repo via `git clone https://github.com/BryJime/unit-2-xact-order.git`
+* Navigate to front end directory `cd unit-2-xact-order/xact-order-front-end`
+* Install npm and framer motion via `npm install` and
+`npm install framer-motion`
+* Use `npm run dev` to run front end
+## Back End
+* Create new schema in MySQL named `xact_order_db` and configure username and password in Users and Privileges
+* Create a .env in `java-spring-boot-back-end-app` root and store username under `DB_USERNAME` and password under `DB_PASSWORD`
+* Add the .env to your .gitignore!
+* Change `spring.datasource.url` in `application.properties` if your Schema is in a different port.
+* Update CrossOrigin annotation in `src/main/java/com/example/java_spring_boot_back_end_app/controllers/ExamController.java` if needed to match front end port. 
 
 # API Endpoints
 | HTTP Method   | Endpoint         | Description                 |
