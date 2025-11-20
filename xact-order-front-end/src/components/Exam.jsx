@@ -33,7 +33,7 @@ function Exam(props) {
                 <div className="exam-display-expanded">
                     <div className="exam-display-description">
                         <h3>Description:</h3>
-                        <p style={{whiteSpace: "pre-wrap"}}> {props.description} </p>
+                        <p style={{whiteSpace: "pre-wrap", fontWeight: "bold"}}> {props.description} </p>
                     </div>
                 </div>
             )}
