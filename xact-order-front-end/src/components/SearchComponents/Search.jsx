@@ -51,7 +51,7 @@ function Search() {
             <h1 className="search-body-message">Search by Body Part</h1>
             <br />
             <Searchbar input={inputValue} setInput={(event) => setinputValue(event.target.value)} data={getSearchData} />
-            <h1 className="search-region-message">or Region</h1>
+            <h1 className="search-region-message">or Skeleton</h1>
             <div className="validation-message">
                 {validInput ? <p> </p> : <p> CANNOT FIND EXAM. ENTER A VALID BODY PART </p>}
             </div>
