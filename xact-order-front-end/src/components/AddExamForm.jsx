@@ -1,7 +1,9 @@
-import { useState, } from "react";
+import { useState, useEffect} from "react";
 
 
 function AddExamForm() {
+
+    const [addExamSuccess, setAddExamSuccess] = useState("");
 
     // State for storing exam data during input
     const [examData, setExamData] = useState({
@@ -16,6 +18,17 @@ function AddExamForm() {
         "alias": ""
     });
 
+    useEffect(() => {
+        const msg = localStorage.getItem("examSuccess");
+        if (msg) {
+            setAddExamSuccess(msg);
+            localStorage.removeItem("examSuccess");
+
+            setTimeout(() => setAddExamSuccess(""), 3000);
+        }
+    }, []);
+
+
 
     const handleChange = (e) => {
         e.preventDefault();
@@ -29,31 +42,40 @@ function AddExamForm() {
     }
 
 
-    const saveExam = async () => {
-        if ((window.confirm("ADD EXAM?"))) {
-            try {
-                const response = await fetch('http://localhost:8080/exams/add', {
-                    method: 'POST',
-                    body: JSON.stringify(examData),
-                    headers: {
-                        "Content-type": "application/json"
+
+    const saveExam = async (e) => {
+        e.preventDefault();
+        const form = document.querySelector('.add-exam-form');
+        if (form.checkValidity()) {
+            if (window.confirm("ADD EXAM?")) {
+                try {
+                    const response = await fetch('http://localhost:8080/exams/add', {
+                        method: 'POST',
+                        body: JSON.stringify(examData),
+                        headers: {
+                            "Content-type": "application/json"
+                        }
+                    });
+
+                    if (!response.ok) {
+                        let error = await response.json();
+                        throw new Error(error.message || 'Failed to POST exam');
                     }
-                });
-
-                if (!response.ok) {
-                    let error = await response.json();
-                    throw new Error(error.message || 'Failed to POST exam');
+                    
+                } catch (e) {
+                    console.error('Error saving exam:', e);
                 }
-
-            } catch (e) {
-                console.error('Error saving exam:', e);
+                localStorage.setItem("examSuccess", "Exam added successfully!");
+                window.location.reload();
             }
-            window.location.reload();
+
         }
+
+
     }
 
 
-    return <form className="add-exam-form">
+    return <form className="add-exam-form" onSubmit={saveExam}>
 
         <label htmlFor="examName" className="exam-form-cell">Exam Name:
             <input className="exam-input" type="text" id="examName" name="name" onChange={handleChange} required />
@@ -77,13 +99,33 @@ function AddExamForm() {
         </label>
 
         <label htmlFor="examAnatomy" className="exam-form-cell">Anatomy:
-            <input className="exam-input" type="text" id="examAnatomy" name="anatomy" placeholder="*Must match Skeleton Anatomy*" onChange={handleChange} required />
+            <select className="exam-input" id="examAnatomy" name="anatomy" onChange={handleChange} required >
+                <option value="" disable="true">Select Anatomy</option>
+                <option value="Skull">Skull</option>
+                <option value="Facial/ENT">Facial/ENT</option>
+                <option value="Chest">Chest</option>
+                <option value="Ribs/Sternum/SC Joint">Ribs/Sternum/SC Joint</option>
+                <option value="Abdomen">Abdomen</option>
+                <option value="Pelvis/Hips">Pelvis/Hips</option>
+                <option value="Shoulder/Clavicle/Scapula">Shoulder/Clavicle/Scapula</option>
+                <option value="Humerus">Humerus</option>
+                <option value="Elbow/Forearm">Elbow/Forearm</option>
+                <option value="Wrist/Hand/Fingers">Wrist/Hand/Fingers</option>
+                <option value="Cervical Spine">Cervical Spine</option>
+                <option value="Thoracic Spine">Thoracic Spine</option>
+                <option value="Lumbar Spine">Lumbar Spine</option>
+                <option value="Sacrum/Other">Sacrum/Other</option>
+                <option value="Femur">Femur</option>
+                <option value="Knee">Knee</option>
+                <option value="TibFib/Ankle">TibFib/Ankle</option>
+                <option value="Foot/Toes">Foot/Toes</option>
+            </select>
         </label>
 
         <label htmlFor="examDescription" className="exam-form-cell">Description:
-            <textarea className="exam-input" id="examDescription" name="description" onChange={handleChange} style={{whiteSpace: "pre-wrap"}} required />
+            <textarea className="exam-input" id="examDescription" name="description" onChange={handleChange} style={{ whiteSpace: "pre-wrap" }} required />
         </label>
-             
+
         <label className="exam-form-cell" >Common Exam:
             <input type="checkbox" name="common" onChange={handleChange} />
         </label>
@@ -92,9 +134,9 @@ function AddExamForm() {
             <input type="checkbox" name="shortcut" onChange={handleChange} />
         </label>
 
-            <button className="admin-button-clear" type="reset">Clear</button>
-
-            <button className="admin-button-add" type="submit" onClick={saveExam} >Add Exam</button>
+        <button className="admin-button-clear" type="reset">Clear</button>
+        <button className="admin-button-add" type="submit">Add Exam</button>
+        {addExamSuccess && <p className="success-message">{addExamSuccess}</p>}
     </form>
 }
 
