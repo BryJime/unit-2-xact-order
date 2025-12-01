@@ -31,7 +31,6 @@ function AddExamForm() {
 
 
     const handleChange = (e) => {
-        e.preventDefault();
 
         const { name, value, type, checked } = e.target;
 
