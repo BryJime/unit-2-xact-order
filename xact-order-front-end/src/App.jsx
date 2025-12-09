@@ -5,6 +5,7 @@ import About from './components/About'
 import Header from './components/Header'
 import ExamsDisplay from './components/ExamsDisplay'
 import AddExam from './components/AddExam.jsx'
+import Login from './components/Login.jsx'
 import { DataProvider } from './components/DataContext.jsx'
 
 
@@ -20,6 +21,7 @@ function App() {
           <Route path="/About.jsx" element={<About />} />
           <Route path="/ExamsDisplay.jsx" element={<ExamsDisplay />} />
           <Route path="/AddExam.jsx" element={<AddExam />} />
+          <Route path="/Login.jsx" element={<Login />} />
         </Routes>
       </Router>
     </DataProvider>

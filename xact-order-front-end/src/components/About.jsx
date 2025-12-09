@@ -1,3 +1,6 @@
+import { Link } from "react-router-dom";
+
+
 function About() {
     return (
         <>
@@ -196,6 +199,25 @@ function About() {
                             Radiologic Technologist R.T. (R) | 
                             LaunchCode Software Development Student
                         </p>
+                    </section>
+
+                    {/* Admin portal */}
+                    <section style={{
+                            textAlign: "center",
+                            backgroundColor: "#f8f9fc",
+                            padding: "20px",
+                            borderRadius: "12px",
+                            boxShadow: "0 3px 8px rgba(0,0,0,0.12)"
+                     }}>
+                        <Link to="/Login.jsx" style={{
+                            display: "inline-block",
+                            marginTop: "15px",
+                            fontSize: "1.1rem",
+                            color: "#000000ff",
+                            }}>
+                            Admin Portal
+                        </Link>
+
                     </section>
 
                 </section>
