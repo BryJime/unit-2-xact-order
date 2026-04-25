@@ -116,7 +116,152 @@ It serves as an educational tool for radiology students, patients or ANYONE that
 * Create a .env in `java-spring-boot-back-end-app` root and store username under `DB_USERNAME` and password under `DB_PASSWORD`
 * Add the .env to your .gitignore!
 * Change `spring.datasource.url` in `application.properties` if your Schema is in a different port.
-* Update CrossOrigin annotation in `src/main/java/com/example/java_spring_boot_back_end_app/controllers/ExamController.java` if needed to match front end port. 
+* Update CrossOrigin annotation in `src/main/java/com/example/java_spring_boot_back_end_app/controllers/ExamController.java` if needed to match front end port.
+  
+<details>
+    <summary>Seed Data Script </summary>
+    <pre><code> 
+DROP TABLE IF EXISTS exams;
+DROP TABLE IF EXISTS alias;
+DROP TABLE IF EXISTS anatomy;
+DROP TABLE IF EXISTS cpt_code;
+DROP TABLE IF EXISTS description;
+DROP TABLE IF EXISTS views;
+
+CREATE TABLE anatomy (
+    id INT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL UNIQUE
+);
+
+CREATE TABLE alias (
+    id INT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE description (
+    id INT PRIMARY KEY,
+    text TEXT NOT NULL
+);
+
+CREATE TABLE views (
+    id INT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE cpt_code (
+    id INT PRIMARY KEY,
+    code VARCHAR(20) NOT NULL
+);
+
+CREATE TABLE exams (
+    id INT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    region VARCHAR(255),
+    shortcut BOOLEAN DEFAULT 0,
+    alias_id INT,
+    anatomy_id INT,
+    cpt_id INT,
+    description_id INT,
+    views_id INT,
+    common BOOLEAN DEFAULT 0,
+    FOREIGN KEY (alias_id) REFERENCES alias(id),
+    FOREIGN KEY (anatomy_id) REFERENCES anatomy(id),
+    FOREIGN KEY (cpt_id) REFERENCES cpt_code(id),
+    FOREIGN KEY (description_id) REFERENCES description(id),
+    FOREIGN KEY (views_id) REFERENCES views(id)
+);
+
+INSERT INTO anatomy (id, name) VALUES
+(1, 'Facial/ENT'),
+(3, 'Ribs/Sternum/SC Joint'),
+(4, 'Sacrum/Other'),
+(6, 'Elbow/Forearm'),
+(7, 'Humerus'),
+(8, 'Chest'),
+(9, 'Abdomen'),
+(10, 'TibFib/Ankle'),
+(11, 'Pelvis/Hips'),
+(12, 'Shoulder/Clavicle/Scapula'),
+(13, 'Foot/Toes'),
+(14, 'Lumbar Spine');
+
+INSERT INTO alias (id, name) VALUES
+(1, 'Nasal Bones, Nose Bones, Nasal Fracture Series'),
+(2, 'Orbits, Eye Sockets, Orbital Bones'),
+(3, 'Sternum, Breastbone'),
+(4, 'Sacrum and Coccyx, Tailbone'),
+(5, 'Scoliosis Series, Full Spine'),
+(6, 'Forearm, Radius and Ulna'),
+(7, 'Humerus, Upper Arm'),
+(8, 'Chest, Thorax, Chest X-Ray'),
+(9, 'Abdomen, Belly, KUB'),
+(10, 'Ankle, Malleoli'),
+(11, 'Hip, Pelvis AP'),
+(12, 'Clavicle, Collarbone'),
+(13, 'Calcaneus, Heel Bone'),
+(14, 'Lumbar Spine, Lower Back');
+
+INSERT INTO description (id, text) VALUES
+(1, 'Radiographs of the nasal bones to evaluate fracture, trauma, or deformity.'),
+(2, 'Imaging of the orbital structures to assess fractures, foreign bodies, or sinus involvement.'),
+(3, 'Sternum radiographs to evaluate trauma, pain, or suspected pathology.'),
+(4, 'Sacrum and coccyx views to assess trauma, pain, or congenital deformities.'),
+(5, 'Full-spine imaging for scoliosis assessment and curvature measurement.'),
+(6, 'Forearm AP and lateral views to evaluate radius and ulna fractures or pain.'),
+(7, 'AP and lateral humerus to assess trauma, pain, or lesions.'),
+(8, 'PA and lateral chest radiographs to evaluate lungs, heart, and mediastinum.'),
+(9, 'Abdominal radiographs to assess obstruction, free air, or bowel pathology.'),
+(10, 'AP and lateral ankle radiographs for trauma, fracture, or joint assessment.'),
+(11, 'Hip or pelvis AP views for trauma, pain, or degenerative disease.'),
+(12, 'Clavicle radiographs to evaluate fracture, AC separation, or alignment.'),
+(13, 'Calcaneus axial and lateral views for fracture or heel pain.'),
+(14, 'Lumbar spine multi-view exam for pain, trauma, or degenerative disease.');
+
+INSERT INTO views (id, name) VALUES
+(1, 'Waters, Lateral'),
+(2, 'Modified Caldwell, Waters, Lateral'),
+(3, 'PA, Lateral'),
+(4, 'AP, Lateral'),
+(5, 'PA, Lateral, Right Bending, Left Bending'),
+(6, 'AP, Upright, Left Lateral Decubitus'),
+(7, 'AP Only'),
+(8, 'AP, Axial'),
+(9, 'Axial, Lateral'),
+(10, 'AP, Oblique, Lateral, Spot Lateral');
+
+INSERT INTO cpt_code (id, code) VALUES
+(1, '70160'),   
+(2, '70200'),  
+(3, '71120'),   
+(4, '72220'),   
+(5, '72082'),   
+(6, '73090'),   
+(7, '73060'),  
+(8, '71046'),   
+(9, '74022'),  
+(10, '73600'),  
+(11, '73501'), 
+(12, '73000'), 
+(13, '73650'),  
+(14, '72110');  
+
+INSERT INTO exams (id, name, region, shortcut, alias_id, anatomy_id, cpt_id, description_id, views_id, common) VALUES
+(40, 'NASAL BONES COMPLETE', 'Head', 0, 1, 1, 1, 1, 1, 0),
+(41, 'ORBITS COMPLETE', 'Head', 0, 2, 1, 2, 2, 2, 0),
+(42, 'STERNUM', 'Chest', 0, 3, 3, 3, 3, 3, 0),
+(43, 'SACRUM AND COCCYX', 'Pelvis', 0, 4, 4, 4, 4, 4, 0),
+(44, 'SCOLIOSIS SERIES', 'Spine', 0, 5, 4, 5, 5, 5, 0),
+(45, 'FOREARM – 2 VIEWS', 'Upper Extremity', 0, 6, 6, 6, 6, 4, 0),
+(46, 'HUMERUS – 2 VIEW', 'Upper Extremity', 0, 7, 7, 7, 7, 4, 0),
+(56, 'CHEST PA AND LAT 2 VIEW', 'Chest', 0, 8, 8, 8, 8, 3, 1),
+(57, 'ABDOMEN ACUTE', 'Abdomen', 0, 9, 9, 9, 9, 6, 1),
+(59, 'ANKLE 2 VIEW', 'Lower Extremity', 0, 10, 10, 10, 10, 4, 1),
+(60, 'AP HIPS', 'Hip', 0, 11, 11, 11, 11, 7, 1),
+(61, 'CLAVICLE 2 VIEW', 'Upper Extremity', 0, 12, 12, 12, 12, 8, 1),
+(64, 'CALCANEUS 2 VIEW', 'Lower Extremity', 0, 13, 13, 13, 13, 9, 1),
+(67, 'LUMBAR 5 VIEWS OR MORE', 'Spine', 1, 14, 14, 14, 14, 10, 1);
+    </code></pre>
+</details>
 
 # API Endpoints
 | HTTP Method   | Endpoint         | Description                 |
