@@ -74,22 +74,22 @@ function AddExam() {
             return <tr key={exam.id}>
                 <td>{exam.id}</td>
                 <td>
-                    <input className="exam-table-name-input" type="text" name="name" value={examData.name} onChange={handleChange} required></input>
+                    <textarea className="exam-table-name-input" type="text" name="name" value={examData.name} onChange={handleChange} required></textarea>
                 </td>
                 <td>
-                    <input className="exam-table-views-input" type="text" name="views" value={examData.views} onChange={handleChange} required></input>
+                    <textarea className="exam-table-views-input" type="text" name="views" value={examData.views} onChange={handleChange} required></textarea>
                 </td>
                 <td>
-                    <input className="exam-table-cpt-input" type="text" name="cptCode" value={examData.cptCode} onChange={handleChange} style={{ width: "50px" }} required></input>
+                    <textarea className="exam-table-cpt-input" type="text" name="cptCode" value={examData.cptCode} onChange={handleChange} style={{ width: "40px" }} required></textarea>
                 </td>
                 <td>
                     <textarea className="exam-table-description-input" type="text" name="description" value={examData.description} onChange={handleChange} style={{ width: "200px" }} required></textarea>
                 </td>
                 <td>
-                    <input className="exam-table-alias-input" type="text" name="alias" value={examData.alias} onChange={handleChange} required></input>
+                    <textarea className="exam-table-alias-input" type="text" name="alias" value={examData.alias} onChange={handleChange} required></textarea>
                 </td>
                 <td>
-                    <input className="exam-table-region-input" type="text" name="region" value={examData.region} onChange={handleChange} style={{ width: "80px" }} required></input>
+                    <textarea className="exam-table-region-input" type="text" name="region" value={examData.region} onChange={handleChange} style={{ width: "50px" }} required></textarea>
                 </td>
                 <td>
                     <label htmlFor="examAnatomy">

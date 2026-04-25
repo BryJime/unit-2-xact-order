@@ -23,11 +23,6 @@ function Header() {
                             ABOUT
                         </Link>
                     </section>
-                    <section className="header-admin">
-                        <Link to="/AddExam.jsx">
-                            ADD
-                        </Link>
-                    </section>
                 </section>
             </header>
         </>

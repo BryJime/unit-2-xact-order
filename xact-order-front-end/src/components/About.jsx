@@ -1,3 +1,6 @@
+import { Link } from "react-router-dom";
+
+
 function About() {
     return (
         <>
@@ -198,7 +201,14 @@ function About() {
                         </p>
                     </section>
 
+                    <section style={{ textAlign: "center", marginTop: "30px", fontSize: "0.9rem", color: "#000000" }}>
+                        <Link to="/LoginDisplay.jsx" style={{color: "black"}}>
+                            ADD EXAMS TO DATABASE
+                        </Link>
+                    </section>   
+
                 </section>
+
             </div>
         </>
     );
