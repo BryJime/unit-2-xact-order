@@ -14,11 +14,14 @@ export const DataProvider = ({ children }) => {
 
     const fetchExams = async () => {
 
+        const API_BASE_URL =
+            import.meta.env.VITE_API_BASE_URL || "http://localhost:8080";
+
         try {
             setIsLoading(true);
             setError(false);
 
-            const response = await fetch('http://localhost:8080/exams/all', {
+            const response = await fetch(`${API_BASE_URL}/exams/all`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'

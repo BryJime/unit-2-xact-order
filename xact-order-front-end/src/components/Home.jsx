@@ -1,5 +1,6 @@
 import Search from "./SearchComponents/Search";
 import { motion } from 'framer-motion'
+import thumbImg from '../../Images/thumb-up-xray.png'
 
 
 function Home() {
@@ -13,7 +14,7 @@ function Home() {
                 transition={{ duration: 1.5, ease: "easeOut" }}
             >Order X‑Ray Exams With Confidence</motion.h1>
             <picture className="home-image">
-                <img src="..\Images\thumb-up-xray.png" alt="X-Ray Hand Thumbs Up" width="900" height="500" />
+                <img src={thumbImg} alt="X-Ray Hand Thumbs Up" width="900" height="500" />
             </picture>
             <motion.p className="get-started"
                 initial={{ opacity: 0 }}
